@@ -1,0 +1,84 @@
+<template>
+    <div class="banner" style={backgroundStyle}>
+        <div class="portal-background">
+            <div class="admission-card">
+
+                <!-- Spinner -->
+                <template if:true={showSpinner}>
+                    <div class="spinner-backdrop">
+                        <lightning-spinner alternative-text="Logging in..." size="medium"></lightning-spinner>
+                        <p class="spinner-text">Logging you in, please wait…</p>
+                    </div>
+                </template>
+
+                <!-- Title: Student Login -->
+                <div class="admission-header">
+                    <div class="header-inline">
+                        <span class="title-gradient">Candidate Login</span>
+                        <lightning-icon icon-name="utility:education" size="medium" class="education-icon"></lightning-icon>
+                    </div>
+                </div>
+
+                <!-- Username Field -->
+                <div class="form-row">
+                    <lightning-input
+                        type="text"
+                        label="User Name"
+                        placeholder="Eg.: 26415000241@reva.edu.in"
+                        variant="label-hidden"
+                        name="userName"
+                        value={username}
+                        onchange={handleUsername}
+                        required>
+                    </lightning-input>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-row">
+                    <lightning-input
+                        type="password"
+                        label="Password"
+                        placeholder="Enter your password"
+                        variant="label-hidden"
+                        name="password"
+                        value={password}
+                        onchange={handlePassword}
+                        required>
+                    </lightning-input>
+                </div>
+
+                <!-- Error Message -->
+                <template if:true={error}>
+                    <div class="field-error">{error}</div>
+                </template>
+
+                <!-- Login Button -->
+                <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-top_medium">
+                    <div style="display:block!important;width:100%;">
+                        <lightning-button variant="destructive" label="Login" onclick={handleLogin} disabled={isLoading}></lightning-button>
+                    </div>
+                </div>
+
+                <!-- Helper Links -->
+                <div style="text-align:center;display:block!important;width:100%;margin-top:15px;">
+                    <div class="already-registered">
+                        <a href="https://admission.reva.edu.in/s/login/ForgotPassword" style="color:var(--lwc-brandTextLink,#0176D3);text-decoration:none;">Forgot your password?</a>
+                        &nbsp;|&nbsp;
+                        <a href="https://admission.reva.edu.in/s/login/ForgotPassword" style="color:var(--lwc-brandTextLink,#0176D3);text-decoration:none;">Resend Verification Link?</a>
+                    </div>
+                    <div class="already-registered slds-m-top_small">
+                        <a href="https://admission.reva.edu.in/s/otp-login" style="color:var(--lwc-brandTextLink,#0176D3);text-decoration:none;">Login With OTP</a>
+                    </div>
+                </div>
+
+                <!-- Not a Member row -->
+                <div style="text-align:center;display:block!important;width:100%;margin-top:15px;">
+                    <div class="already-registered">Not a Member?
+                        <a href="https://admission.reva.edu.in" style="color:#be2e26;">Register Here</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>

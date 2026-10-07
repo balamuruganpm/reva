@@ -1,0 +1,110 @@
+/* Full-page background setup */
+:host {
+    display: block;
+}
+
+
+.banner{
+    background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;               
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 0%;
+        box-sizing: border-box;
+} 
+
+/*
+.banner{
+background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 0;
+    pointer-events: none;
+} */    
+
+.page-wrapper {
+    /* background-image: url('https://www.reva.edu.in/new-admissions/images/reva-banner-Desktop.webp');  */
+    /* background-image: url('https://reva-university--revapar--c.sandbox.vf.force.com/resource/1772078893000/applicant_portal_banner');
+    background-size: cover;
+    background-position: center; */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps background still while scrolling */
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Pushes content to the right */
+    align-items: center; /* Centers card vertically */
+}
+
+/* The Main Card */
+.auth-card {
+    /* background: rgba(255, 255, 255, 0.95); Slight transparency for a modern look */
+    /* border-radius: 0.75rem; */
+    /* width: 600px;
+    height: 700px; */
+    /* margin-right: 5%; Spacing from the right edge */
+    /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); */
+    /* overflow: hidden; */
+    padding-top: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Pushes content to the right */
+    align-items: center;
+    
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .page-wrapper {
+        justify-content: center; /* Center card on mobile */
+    }
+    .auth-card {
+        width: 100%;
+        margin-right: 0;
+        height: auto;
+        min-height: 500px;
+    }
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4f6f9;
+}
+
+.login-box {
+    width: 400px;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.login-btn {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.error-msg {
+    color: red;
+    margin-top: 1rem;
+}

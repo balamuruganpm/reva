@@ -1,0 +1,74 @@
+<template>
+    <div class="banner" style={backgroundStyle}>
+        <div class="portal-background">
+            <div class="admission-card">
+
+                <div class="admission-header">
+                    <div class="header-inline">
+                        <span class="title-gradient">OTP Login</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <lightning-input
+                        type="text"
+                        label="Enter Email"
+                        placeholder="Eg.: gunavardhan.reddy@gmail.com"
+                        variant="label-hidden"
+                        name="Email"
+                        value={identifier}
+                        onchange={handleIdentifierChange}
+                        disabled={otpSent}
+                        required>
+                    </lightning-input>
+                </div>
+
+                <template if:false={otpSent}>
+                    <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-top_medium">
+                        <div style="display:block!important;width:100%;">
+                            <lightning-button variant="destructive" label="Send OTP" onclick={sendOTP} disabled={isLoading}></lightning-button>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={otpSent}>
+                    <div class="form-row">
+                        <lightning-input
+                            type="text"
+                            label="Enter OTP"
+                            placeholder="Enter OTP"
+                            variant="label-hidden"
+                            value={otp}
+                            onchange={handleOTPChange}
+                            required>
+                        </lightning-input>
+                    </div>
+
+                    <p class="slds-text-body_small slds-m-top_x-small" style="color:#666;font-size:12px;">
+                        OTP is valid for 5 minutes.
+                    </p>
+
+                    <div class="slds-m-top_medium slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-button
+                                variant="destructive"
+                                label="Verify OTP"
+                                onclick={verifyOTP}
+                                disabled={isLoading}>
+                            </lightning-button>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-button
+                                variant="neutral"
+                                label={resendLabel}
+                                onclick={resendOTP}
+                                disabled={disableResend}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+        </div>
+    </div>
+</template>

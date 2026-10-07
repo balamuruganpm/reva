@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview: Student Admission Login</title>
+    <!-- Load SLDS CSS from Salesforce CDN for standard LWC styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.21.1/styles/salesforce-lightning-design-system.min.css" integrity="sha512-RzU67nBv6H2J1m/dEET/YI5Jp8gVlH/P6U8S3/eK/C2zB3V7rVvC5P+b08S8fG2G/v5O+u/b7Q2F+Z1U9V+3Ww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Base LWC typography */
+        body {
+            font-family: 'Nunito Sans', NunitoSans, sans-serif !important;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9; /* Fallback background */
+        }
+        
+        .banner {
+            /* Mock background image since we don't have the static resource url locally */
+            background: linear-gradient(135deg, #1b5297 0%, #be2e26 100%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+        }
+
+        /* ── Copied from your new CSS ── */
+        .portal-background {
+            height    : 100%;
+            width     : 100%;
+            display   : flex;
+            justify-content: flex-end; /* Align form card to the right side */
+            align-items    : center;
+            padding   : 0;
+            padding-right: 69px;
+            box-sizing: border-box;
+        }
+
+        .admission-card {
+            background   : #ffffff;
+            border-radius: 16px;
+            padding      : 24px 30px;
+            box-shadow   : 0 12px 32px rgba(0,0,0,0.15);
+            max-height   : 80vh;
+            overflow-y   : auto;
+            overflow-x   : visible;
+            width: 70%;
+            max-width: 420px;
+            position     : relative;
+            box-sizing   : border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 6px;
+        }
+
+        .admission-header { text-align: center; margin-top: 5px; margin-bottom: 15px; }
+        
+        .header-inline {
+            display    : inline-flex;
+            align-items: center;
+            gap        : 8px;
+        }
+        
+        .title-gradient {
+            font-family: 'Nunito Sans', NunitoSans, sans-serif !important;
+            font-size  : 25px !important;
+            font-weight: 700;
+            color      : #111111;
+        }
+        
+        .form-row { position: relative; overflow: visible; margin-top: 2px; margin-bottom: 2px; }
+        
+        .already-registered { font-size: 0.8rem; line-height: 1.8; font-weight: bold;}
+        .already-registered a { margin-left: 4px; font-weight: 600; text-decoration: none; color: #0176D3;}
+        .already-registered a:hover { text-decoration: underline; }
+        
+        /* ── MOCK LIGHTNING INPUTS & BUTTONS ── */
+        .mock-lightning-input {
+            width: 100%;
+            padding: 0 12px;
+            height: 38px;
+            border: 1px solid #727272;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #1a1a1a;
+            box-sizing: border-box;
+            font-family: 'Nunito Sans', NunitoSans, sans-serif;
+        }
+        .mock-lightning-input:focus {
+            border-color: #1b5297;
+            outline: none;
+            box-shadow: 0 0 3px rgba(114,114,114,.5);
+        }
+        
+        .mock-lightning-btn {
+            height: 40px !important;
+            border-radius: 6px !important;
+            background-color: #be2e26 !important;
+            border-color: #be2e26 !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            padding: 0 20px !important;
+            transition: background-color 0.2s ease !important;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Nunito Sans', NunitoSans, sans-serif;
+        }
+        .mock-lightning-btn:hover {
+            background-color: #a3221b !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="banner">
+    <div class="portal-background">
+        <div class="admission-card">
+
+            <div class="admission-header">
+                <div class="header-inline">
+                    <span class="title-gradient">Candidate Login</span>
+                </div>
+            </div>
+
+            <div class="form-row" style="margin-bottom: 12px;">
+                <input class="mock-lightning-input" type="text" placeholder="Eg.: 26415000241@reva.edu.in" />
+            </div>
+
+            <div class="form-row">
+                <input class="mock-lightning-input" type="password" placeholder="Enter your password" />
+            </div>
+
+            <div class="form-row slds-m-top_medium">
+                <button class="mock-lightning-btn">Login</button>
+            </div>
+
+            <div style="text-align:center;display:block!important;width:100%;margin-top:15px;">
+                <div class="already-registered">
+                    <a href="#">Forgot your password?</a> &nbsp;|&nbsp; <a href="#">Resend Verification Link?</a>
+                </div>
+                <div class="already-registered slds-m-top_small">
+                    <a href="#">Login With OTP</a>
+                </div>
+            </div>
+
+            <div style="text-align:center;display:block!important;width:100%;margin-top:15px;">
+                <div class="already-registered">Not a Member?
+                    <a href="#" style="color:#be2e26;">Register Here</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2428 @@
+<style>
+    /* ── Design System & Base ── */
+
+    .portal-background {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .admission-card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 20px 22px 22px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        width: 100%;
+        max-width: 520px;
+        box-sizing: border-box;
+        border: 1px solid #f0f0f0;
+        height: 580px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #c30010 transparent;
+    }
+
+    /* ── Header ── */
+    .admission-header {
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    .admission-header span {
+        font-size: 24px;
+        font-weight: 700;
+        color: #111111;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .graduation-icon {
+        font-size: 24px;
+    }
+
+    /* ── Forms and Layout ── */
+    .form-group {
+        margin-bottom: 16px;
+        position: relative;
+    }
+
+    .two-col {
+        display: flex;
+        gap: 16px;
+    }
+
+    .two-col>.form-group {
+        flex: 1;
+        min-width: 0;
+    }
+
+    /* Labels */
+    .form-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 500;
+        color: #555555;
+        margin-bottom: 6px;
+        text-align: left;
+    }
+
+    .required-asterisk {
+        color: #c30010;
+        margin-right: 3px;
+        font-weight: 600;
+    }
+
+    /* Input Wrappers for Error Icons */
+    .input-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    /* Inputs and Select Triggers (Small Inputs: 36px height) */
+    .form-input {
+        width: 100%;
+        height: auto;
+        border: 1px solid #c4c4c4;
+        border-radius: 8px;
+        padding: 5px 15px;
+        font-size: 13px;
+        font-family: inherit;
+        color: #333333;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus {
+        border-color: #ae2f2f;
+        box-shadow: 0 0 0 1px #ae2f2f;
+    }
+
+    .form-input.has-error {
+        border-color: #c23934 !important;
+        box-shadow: 0 0 0 1px #c23934 !important;
+        padding-right: 32px !important;
+    }
+
+    /* Exclamation Error Icon inside inputs */
+    .error-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        height: 15px;
+        background-color: #c23934;
+        color: #ffffff;
+        border-radius: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: bold;
+        pointer-events: none;
+    }
+
+    .form-input.has-error+.error-icon {
+        display: flex;
+    }
+
+    /* Custom Dropdown Trigger */
+    .dropup-trigger,
+    .select-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        background-color: #ffffff;
+        border: 1px solid #c4c4c4;
+        border-radius: 8px;
+        padding: 5px 15px;
+        font-size: 13px;
+        height: 36px;
+        box-sizing: border-box;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .dropup-trigger:hover,
+    .select-trigger:hover {
+        border-color: #ae2f2f;
+    }
+
+    .dropup-trigger.active,
+    .select-trigger.active {
+        border-color: #ae2f2f;
+        box-shadow: 0 0 0 1px #ae2f2f;
+    }
+
+    .dropup-trigger-text,
+    .select-trigger-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: #333333;
+        font-size: 13px;
+    }
+
+    .dropup-trigger-text.placeholder,
+    .select-trigger-text.placeholder {
+        color: #888888;
+    }
+
+    /* Dropdown Chevron */
+    .chevron-icon {
+        border: solid #888888;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        margin-left: 8px;
+        transition: transform 0.2s;
+    }
+
+    .dropup-trigger.active .chevron-icon,
+    .select-trigger.active .chevron-icon {
+        transform: rotate(-135deg);
+    }
+
+    /* Search Box inside dropdown lists */
+    .search-wrapper {
+        position: sticky;
+        top: 0;
+        background: #ffffff;
+        padding: 6px 8px;
+        border-bottom: 1px solid #e0e0e0;
+        z-index: 10;
+    }
+
+    .dropdown-search-input {
+        width: 100%;
+        height: 30px;
+        border: 1px solid #c4c4c4;
+        border-radius: 6px;
+        padding: 0 8px;
+        font-size: 13px;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .dropdown-search-input:focus {
+        border-color: #ae2f2f;
+        box-shadow: 0 0 0 1px #ae2f2f;
+    }
+
+    /* Custom Dropdown Wrapper */
+    .dropup-wrapper {
+        position: relative;
+    }
+
+    .dropup-list {
+        position: fixed !important;
+        bottom: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 99999 !important;
+        background: #fff;
+        border: 1px solid #dcdcdc;
+        border-radius: 10px;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+        max-height: 220px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 4px;
+        scrollbar-width: thin;
+        scrollbar-color: #c30010 transparent;
+    }
+
+    .dropup-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .dropup-list li {
+        padding: 0 !important;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .dropup-list .slds-listbox__option {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+        color: #333333 !important;
+        background-color: #ffffff !important;
+        transition: background 0.15s, color 0.15s;
+    }
+
+    .dropup-list li:hover .slds-listbox__option,
+    .dropup-list li:hover .slds-truncate,
+    .dropup-list li.selected .slds-listbox__option,
+    .dropup-list li.selected .slds-truncate {
+        background-color: #5897fb !important;
+        color: #ffffff !important;
+    }
+
+    /* Specific styles for Code and Mobile column widths */
+    .code-col {
+        flex: 0 0 40%;
+    }
+
+    .mobile-col {
+        flex: 0 0 60%;
+    }
+
+    /* ── Checkbox / Authorisation ── */
+    .declaration-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        user-select: none;
+        cursor: pointer;
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        margin-top: 3px;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #c4c4c4;
+        border-radius: 4px;
+        cursor: pointer;
+        accent-color: #c30010;
+    }
+
+    .checkbox-label {
+        font-size: 13px;
+        color: #555555;
+        line-height: 1.4;
+        text-align: left;
+    }
+
+    /* ── Field error ── */
+    .field-error {
+        color: #c23934 !important;
+        font-size: 13px !important;
+        margin-top: 4px !important;
+        display: block !important;
+        text-align: left !important;
+        font-weight: 500 !important;
+    }
+
+    .declaration-wrapper .field-error {
+        margin-top: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    /* ── Actions & Links Row ── */
+    .action-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 20px;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+        background-color: #ae2f2f;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 24px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        height: 38px;
+    }
+
+    .submit-btn:hover {
+        background-color: #922424;
+    }
+
+    /* Helper Links */
+    .already-registered {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #333333;
+    }
+
+    .already-registered a {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: 700;
+        margin-left: 2px;
+    }
+
+    .already-registered a:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Scrollbars ── */
+    .dropup-list::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .dropup-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .dropup-list::-webkit-scrollbar-thumb {
+        background: #c30010;
+        border-radius: 3px;
+    }
+
+    .admission-card::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .admission-card::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .admission-card::-webkit-scrollbar-thumb {
+        background: #c30010;
+        border-radius: 10px;
+    }
+
+    /* ── Responsive Styling ── */
+    @media (max-width: 1024px) {
+        .admission-card {
+            height: 72vh;
+            max-height: 72vh;
+        }
+    }
+
+    @media (min-width: 575px) and (max-width: 768px) {
+        .admission-card-form {
+            width: 100%;
+            /* height: 100%; */
+            height: 72vh;
+            overflow-y: auto;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .declaration-wrapper {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .declaration-wrapper .field-error {
+            white-space: normal !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .two-col {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .two-col>.form-group {
+            width: 100%;
+        }
+
+        .action-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            width: 100%;
+        }
+
+        .already-registered {
+            text-align: center;
+        }
+
+        .admission-card {
+            padding: 16px 12px;
+            height: 72vh;
+            max-height: 72vh;
+        }
+    }
+
+    /* LWC Host Grid Alignment Overrides */
+    :host .slds-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+    }
+
+    :host .slds-col {
+        flex: unset !important;
+    }
+
+    :host {
+        /* Styling Hooks to style lightning-input fields like native form-inputs */
+        --slds-c-input-color-border: #c4c4c4;
+        --slds-c-input-radius-border: 8px;
+        --slds-c-input-shadow: none;
+        --slds-c-input-spacing-padding-top: 5px;
+        --slds-c-input-spacing-padding-bottom: 5px;
+        --slds-c-input-spacing-padding-left: 15px;
+        --slds-c-input-spacing-padding-right: 15px;
+        --slds-c-input-text-color: #333333;
+        --slds-c-input-font-size: 13px;
+        --slds-c-input-line-height: 1.5;
+
+        /* Focus state overrides */
+        --slds-c-input-color-border-focus: #ae2f2f;
+        --slds-c-input-shadow-focus: 0 0 0 1px #ae2f2f;
+
+        /* Checkbox overrides */
+        --slds-c-checkbox-radius-border: 4px;
+        --slds-c-checkbox-color-border: #c4c4c4;
+        --slds-c-checkbox-color-background-checked: #c30010;
+        --slds-c-checkbox-color-border-checked: #c30010;
+        --slds-c-checkbox-mark-color-foreground: #ffffff;
+
+        /* Form Label overrides */
+        --slds-c-form-element-label-text-color: #555555;
+        --slds-c-form-element-label-font-size: 11px;
+        --slds-c-form-element-label-font-weight: 500;
+    }
+</style>
+
+<template>
+    <div class="banner" style={mobBackgroundStyle}>
+        <div class="portal-background">
+            <div class="container">
+                <div class="text-overlay">
+                    <div class="admission-card">
+
+                        <template if:true={showSpinner}>
+                            <div class="spinner-backdrop">
+                                <lightning-spinner alternative-text="Processing payment..."
+                                    size="medium"></lightning-spinner>
+                                <p class="spinner-text">Processing your payment, please wait…</p>
+                            </div>
+                        </template>
+
+                        <!-- Header -->
+                        <div class="admission-header">
+                            <div class="header-inline">
+                                <span class="title-gradient">Admissions {propYear}</span>
+                                <lightning-icon icon-name="utility:education" size="medium"
+                                    class="education-icon"></lightning-icon>
+                            </div>
+                        </div>
+
+                        <template if:false={showPaidView}>
+
+                            <!-- First Name / Last Name -->
+                            <div class="two-col">
+                                <div>
+                                    <lightning-input label="First Name" value={firstName} name="firstName"
+                                        onchange={handleFirstNameChange} disabled={verifyEmail}
+                                        required></lightning-input>
+                                    <template if:true={validationErrors.firstName}>
+                                        <div class="field-error">{validationErrors.firstName}</div>
+                                    </template>
+                                </div>
+                                <div>
+                                    <lightning-input label="Last Name" value={lastName} name="lastName"
+                                        onchange={handleLastNameChange} disabled={verifyEmail}
+                                        required></lightning-input>
+                                    <template if:true={validationErrors.lastName}>
+                                        <div class="field-error">{validationErrors.lastName}</div>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="email-row">
+                                <div class="email-field-wrap">
+                                    <lightning-input label="Email" value={email} name="email"
+                                        onchange={handleEmailChange} type="email" disabled={verifyEmail}
+                                        required></lightning-input>
+                                    <template if:true={validationErrors.email}>
+                                        <div class="field-error">{validationErrors.email}</div>
+                                    </template>
+                                    <template if:true={validationErrors.emailVerified}>
+                                        <div class="field-error">{validationErrors.emailVerified}</div>
+                                    </template>
+                                </div>
+                                <template if:false={isVerifyEmailDisabled}>
+                                    <lightning-button variant="destructive" label="Verify Email"
+                                        onclick={sendEmailOtp}></lightning-button>
+                                </template>
+                            </div>
+
+                            <!-- Email OTP -->
+                            <template if:true={showEmailOTP}>
+                                <template if:false={isEmailVerified}>
+                                    <div class="otp-row">
+                                        <lightning-input class="otp-input-small" max-length="6" label="Email OTP"
+                                            value={emailOtp} onchange={handleEmailOtpChange}
+                                            required={otpRequired}></lightning-input>
+                                        <lightning-button variant="destructive" label="Verify OTP"
+                                            onclick={verifyEmailOtp}></lightning-button>
+                                        <lightning-button variant="destructive" label="Resend OTP"
+                                            onclick={handleResendEmailOtp}></lightning-button>
+                                    </div>
+                                </template>
+                                <template if:true={isEmailVerified}>
+                                    <div
+                                        class="slds-p-top_small slds-text-color_success slds-grid slds-grid_vertical-align-center">
+                                        <lightning-icon icon-name="utility:check" alternative-text="Verified"
+                                            variant="success" size="x-small"
+                                            class="slds-m-right_x-small"></lightning-icon>
+                                        <strong>Email verified successfully!!!</strong>
+                                    </div>
+                                </template>
+                                <template if:true={resendEmailOtpMessage}>
+                                    <div class="slds-text-color_success slds-m-top_small">{resendEmailOtpMessage}</div>
+                                </template>
+                                <template if:true={emailOtpError}>
+                                    <div class="slds-text-color_error slds-m-top_small">Invalid OTP. Please try again.
+                                    </div>
+                                </template>
+                                <template if:true={emailExists}>
+                                    <div class="slds-text-color_success slds-m-top_small">Registration Completed
+                                        Already, Please Proceed With Payment</div>
+                                    <lightning-button variant="destructive" label="Make Payment"
+                                        onclick={PaymentPageNew} class="slds-m-top_medium"
+                                        disabled={isPaymentClicked}></lightning-button>
+                                </template>
+                            </template>
+
+                            <template if:false={emailExists}>
+
+                                <!-- ══ CODE + MOBILE — same row ══ -->
+                                <div class="code-mobile-row">
+
+                                    <!-- Code Dropup — narrow -->
+                                    <div class="code-col">
+                                        <label class="dropup-label">
+                                            <abbr class="slds-required" title="required">*</abbr>Code
+                                        </label>
+                                        <div class={phoneCodeTriggerClass} onclick={togglePhoneCodeDrop}>
+                                            <span class={phoneCodeTextClass}>{phoneCodeLabelDisplay}</span>
+                                            <span class="dropup-trigger-icon">
+                                                <lightning-icon icon-name="utility:chevrondown"
+                                                    size="x-small"></lightning-icon>
+                                            </span>
+                                        </div>
+                                        <template if:true={phoneCodeOpen}>
+                                            <div class="dropup-list" style={dropStyle} role="listbox">
+                                                <div class="search-wrapper">
+                                                    <input type="text" class="dropdown-search-input"
+                                                        placeholder="Search Code..." oninput={handlePhoneCodeSearch} />
+                                                </div>
+                                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                    <template for:each={phoneCodeOptions} for:item="opt">
+                                                        <li key={opt.value} class="slds-listbox__item"
+                                                            data-value={opt.value} onclick={selectPhoneCode}>
+                                                            <span
+                                                                class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                                role="option">
+                                                                <span class="slds-media__body">
+                                                                    <span class="slds-truncate">{opt.label}</span>
+                                                                </span>
+                                                            </span>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </div>
+                                        </template>
+                                    </div>
+
+                                    <!-- Mobile Number -->
+                                    <div class="mobile-col">
+                                        <lightning-input label="Mobile Number" value={mobileNumber} name="mobileNumber"
+                                            onchange={handleMobileChange} required></lightning-input>
+                                    </div>
+
+                                    <!-- Send OTP button -->
+                                    <template if:false={otherCountry}>
+                                        <template if:false={isSendOtpDisabled}>
+                                            <lightning-button variant="destructive" label="Send OTP"
+                                                onclick={sendOtp}></lightning-button>
+                                        </template>
+                                    </template>
+                                    <!-- disabled={isSendOtpDisabled} -->
+                                </div>
+
+                                <!-- Errors -->
+                                <template if:true={mobileErrorMessage}>
+                                    <div class="field-error">{mobileErrorMessage}</div>
+                                </template>
+                                <template if:true={mobileError}>
+                                    <div class="field-error">{mobileError}</div>
+                                </template>
+                                <template if:true={validationErrors.mobileVerified}>
+                                    <div class="field-error">{validationErrors.mobileVerified}</div>
+                                </template>
+                                <template if:true={validationErrors.phoneCode}>
+                                    <div class="field-error">{validationErrors.phoneCode}</div>
+                                </template>
+                                <template if:true={validationErrors.mobileNumber}>
+                                    <div class="field-error">{validationErrors.mobileNumber}</div>
+                                </template>
+                                <!-- Mobile OTP -->
+                                <template if:true={showMobileOtp}>
+                                    <template if:false={isVerified}>
+                                        <div class="otp-row">
+                                            <lightning-input label="Mobile OTP" value={otp} onchange={handleOtpChange}
+                                                required={otpRequired}></lightning-input>
+                                            <lightning-button variant="destructive" label="Verify OTP"
+                                                onclick={verifyOtp} disabled={verifyPhone}></lightning-button>
+                                            <lightning-button variant="destructive" label="Resend OTP"
+                                                onclick={handleResendOtp} disabled={verifyPhone}></lightning-button>
+                                        </div>
+                                        <template if:true={resendOtpMessage}>
+                                            <div class="slds-text-color_success slds-m-top_small">{resendOtpMessage}
+                                            </div>
+                                        </template>
+                                        <template if:true={otpError}>
+                                            <div class="slds-text-color_error slds-m-top_small">Invalid OTP. Please try
+                                                again.</div>
+                                        </template>
+                                    </template>
+                                    <template if:true={isVerified}>
+                                        <div
+                                            class="slds-p-top_small slds-text-color_success slds-grid slds-grid_vertical-align-center">
+                                            <lightning-icon icon-name="utility:check" alternative-text="Verified"
+                                                variant="success" size="x-small"
+                                                class="slds-m-right_x-small"></lightning-icon>
+                                            <strong>Mobile Number verified successfully!</strong>
+                                        </div>
+                                        <template if:true={showSubmitMessage}>
+                                            <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+                                                <span style="color:red;font-weight:bold;">Please click Submit button to
+                                                    continue</span>
+                                            </div>
+                                        </template>
+                                    </template>
+                                </template>
+
+                                <!-- ══ CATEGORY ══ -->
+                                <div class="form-row">
+                                    <div class={categoryDropClass}>
+                                        <label class="dropup-label">
+                                            <abbr class="slds-required" title="required">*</abbr>Category
+                                        </label>
+                                        <div class={categoryTriggerClass} onclick={toggleCategoryDrop}>
+                                            <span class={categoryTextClass}>{categoryLabelDisplay}</span>
+                                            <span class="dropup-trigger-icon">
+                                                <lightning-icon icon-name="utility:chevrondown"
+                                                    size="x-small"></lightning-icon>
+                                            </span>
+                                        </div>
+                                        <template if:true={categoryOpen}>
+                                            <div class="dropup-list" style={dropStyle} role="listbox">
+                                                <div class="search-wrapper">
+                                                    <input type="text" class="dropdown-search-input"
+                                                        placeholder="Search Category..."
+                                                        oninput={handleCategorySearch} />
+                                                </div>
+                                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                    <template for:each={categoryOptions} for:item="opt">
+                                                        <li key={opt.value} class="slds-listbox__item"
+                                                            data-value={opt.value} onclick={selectCategory}>
+                                                            <span
+                                                                class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                                role="option">
+                                                                <span class="slds-media__body">
+                                                                    <span class="slds-truncate">{opt.label}</span>
+                                                                </span>
+                                                            </span>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </div>
+                                        </template>
+                                        <template if:true={validationErrors.category}>
+                                            <div class="field-error">{validationErrors.category}</div>
+                                        </template>
+                                    </div>
+                                </div>
+
+                                <!-- ══ STATE ══ -->
+                                <template if:true={showStatePicklist}>
+                                    <div class="form-row">
+                                        <div class={stateDropClass}>
+                                            <label class="dropup-label">
+                                                <abbr class="slds-required" title="required">*</abbr>State
+                                            </label>
+                                            <div class={stateTriggerClass} onclick={toggleStateDrop}>
+                                                <span class={stateTextClass}>{stateLabelDisplay}</span>
+                                                <span class="dropup-trigger-icon">
+                                                    <lightning-icon icon-name="utility:chevrondown"
+                                                        size="x-small"></lightning-icon>
+                                                </span>
+                                            </div>
+                                            <template if:true={stateOpen}>
+                                                <div class="dropup-list" style={dropStyle} role="listbox">
+                                                    <div class="search-wrapper">
+                                                        <input type="text" class="dropdown-search-input"
+                                                            placeholder="Search State..." oninput={handleStateSearch} />
+                                                    </div>
+                                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                        <template for:each={stateOptions} for:item="opt">
+                                                            <li key={opt.value} class="slds-listbox__item"
+                                                                data-value={opt.value} onclick={selectState}>
+                                                                <span
+                                                                    class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                                    role="option">
+                                                                    <span class="slds-media__body">
+                                                                        <span class="slds-truncate">{opt.label}</span>
+                                                                    </span>
+                                                                </span>
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                </div>
+                                            </template>
+                                            <template if:true={validationErrors.state}>
+                                                <div class="field-error">{validationErrors.state}</div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <!-- ══ COUNTRY ══ -->
+                                <template if:true={showCountryPicklist}>
+                                    <div class="form-row">
+                                        <div class={countryDropClass}>
+                                            <label class="dropup-label">
+                                                <abbr class="slds-required" title="required">*</abbr>Country
+                                            </label>
+                                            <div class={countryTriggerClass} onclick={toggleCountryDrop}>
+                                                <span class={countryTextClass}>{countryLabelDisplay}</span>
+                                                <span class="dropup-trigger-icon">
+                                                    <lightning-icon icon-name="utility:chevrondown"
+                                                        size="x-small"></lightning-icon>
+                                                </span>
+                                            </div>
+                                            <template if:true={countryOpen}>
+                                                <div class="dropup-list" style={dropStyle} role="listbox">
+                                                    <div class="search-wrapper">
+                                                        <input type="text" class="dropdown-search-input"
+                                                            placeholder="Search Country..."
+                                                            oninput={handleCountrySearch} />
+                                                    </div>
+                                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                        <template for:each={countryOptions} for:item="opt">
+                                                            <li key={opt.value} class="slds-listbox__item"
+                                                                data-value={opt.value} onclick={selectCountry}>
+                                                                <span
+                                                                    class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                                    role="option">
+                                                                    <span class="slds-media__body">
+                                                                        <span class="slds-truncate">{opt.label}</span>
+                                                                    </span>
+                                                                </span>
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                </div>
+                                            </template>
+                                            <template if:true={validationErrors.country}>
+                                                <div class="field-error">{validationErrors.country}</div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <!-- ══ SCHOOL + PROGRAM ══ -->
+                                <div class="two-col">
+                                    <div>
+                                        <div class={schoolDropClass}>
+                                            <label class="dropup-label">
+                                                <abbr class="slds-required" title="required">*</abbr>School
+                                            </label>
+                                            <div class={schoolTriggerClass} onclick={toggleSchoolDrop}>
+                                                <span class={schoolTextClass}>{schoolLabelDisplay}</span>
+                                                <span class="dropup-trigger-icon">
+                                                    <lightning-icon icon-name="utility:chevrondown"
+                                                        size="x-small"></lightning-icon>
+                                                </span>
+                                            </div>
+                                            <template if:true={schoolOpen}>
+                                                <div class="dropup-list" style={dropStyle} role="listbox">
+                                                    <div class="search-wrapper">
+                                                        <input type="text" class="dropdown-search-input"
+                                                            placeholder="Search School..."
+                                                            oninput={handleSchoolSearch} />
+                                                    </div>
+                                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                        <template for:each={schools} for:item="opt">
+                                                            <li key={opt.value} class="slds-listbox__item"
+                                                                data-value={opt.value} onclick={selectSchool}>
+                                                                <span
+                                                                    class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                                    role="option">
+                                                                    <span class="slds-media__body">
+                                                                        <span class="slds-truncate">{opt.label}</span>
+                                                                    </span>
+                                                                </span>
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                </div>
+                                            </template>
+                                            <template if:true={validationErrors.school}>
+                                                <div class="field-error">{validationErrors.school}</div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class={programDropClass}>
+                                            <label class="dropup-label">
+                                                <abbr class="slds-required" title="required">*</abbr>Program
+                                            </label>
+                                            <div class={programTriggerClass} onclick={toggleProgramDrop}>
+                                                <span class={programTextClass}>{programLabelDisplay}</span>
+                                                <span class="dropup-trigger-icon">
+                                                    <lightning-icon icon-name="utility:chevrondown"
+                                                        size="x-small"></lightning-icon>
+                                                </span>
+                                            </div>
+                                            <template if:true={programOpen}>
+                                                <div class="dropup-list" style={dropStyle} role="listbox">
+                                                    <div class="search-wrapper">
+                                                        <input type="text" class="dropdown-search-input"
+                                                            placeholder="Search Program..."
+                                                            oninput={handleProgramSearch} />
+                                                    </div>
+                                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                        <template for:each={programs} for:item="opt">
+                                                            <li key={opt.value} class="slds-listbox__item"
+                                                                data-value={opt.value} onclick={selectProgram}>
+                                                                <span
+                                                                    class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                                    role="option">
+                                                                    <span class="slds-media__body">
+                                                                        <span class="slds-truncate">{opt.label}</span>
+                                                                    </span>
+                                                                </span>
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                </div>
+                                            </template>
+                                            <template if:true={validationErrors.program}>
+                                                <div class="field-error">{validationErrors.program}</div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Declaration -->
+                                <div class="declaration-wrapper slds-m-top_medium slds-m-bottom_medium">
+                                    <lightning-input type="checkbox"
+                                        label="I authorise REVA University to contact me for updates and notifications."
+                                        checked={declarationChecked} onchange={handleDeclarationChange} required>
+                                    </lightning-input>
+                                    <template if:true={validationErrors.declaration}>
+                                        <div class="field-error">{validationErrors.declaration}</div>
+                                    </template>
+                                </div>
+
+                                <template if:true={submitErrorMessage}>
+                                    <div class="slds-text-color_error slds-m-top_small">{submitErrorMessage}</div>
+                                </template>
+
+                                <div
+                                    class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-top_medium">
+                                    <div style="display:block!important;width:100%;">
+                                        <template if:false={isSubmitting}>
+                                            <lightning-button variant="destructive" label="Submit"
+                                                onclick={submitApplication}></lightning-button>
+                                        </template>
+                                        <template if:true={isSubmitting}>
+                                            <div style="display:flex;align-items:center;gap:10px;margin-top:10px;">
+                                                <lightning-spinner alternative-text="Submitting"
+                                                    size="small"></lightning-spinner>
+                                                <span style="color:red;font-weight:bold;">Thank you for the Registration
+                                                    please wait....</span>
+                                            </div>
+                                        </template>
+                                    </div>
+                                    <template if:false={disableRegisterPageLink}>
+                                        <div style="text-align:right;display:block!important;width:100%;">
+                                            <div class="already-registered">Already Registered,
+                                                <a href="https://admission.reva.edu.in/s/login/"
+                                                    style={helperLinkStyle}>Sign-In Here</a>
+                                            </div>
+                                            <div class="already-registered">In Complete Registration
+                                                <a href="javascript:void(0);" onclick={handleSignIn}>Click Here</a>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+
+                            </template>
+                        </template>
+
+                        <!-- Paid view -->
+                        <template if:true={IsshowPaidView}>
+                            <div class="slds-box slds-theme_default slds-m-top_small">
+                                <div class="slds-text-heading_medium">Dear Applicant,</div>
+                                <div class="slds-m-top_small slds-text-body_regular">You have already registered with
+                                    REVA University.</div>
+                                <div class="slds-m-top_large">
+                                    <div class="slds-m-bottom_small"><span
+                                            class="slds-text-color_brand slds-text-title_bold">School: </span><span
+                                            class="slds-text-title_bold">{paidSchool}</span></div>
+                                    <div class="slds-m-bottom_small"><span
+                                            class="slds-text-color_brand slds-text-title_bold">Program: </span><span
+                                            class="slds-text-title_bold">{paidProgram}</span></div>
+                                    <div class="slds-m-bottom_small"><span
+                                            class="slds-text-color_brand slds-text-title_bold">Application Number:
+                                        </span><span class="slds-text-title_bold">{paidApplicationNumber}</span></div>
+                                </div>
+                                <div class="slds-m-top_medium slds-text-body_regular">{paidMessage}</div>
+                                <span class="slds-text-title_bold">{addedMessage}</span>
+                                <div class="already-registered slds-m-top_small">Already reset? Click here to log in to
+                                    the ,
+                                    <a href="https://admission.reva.edu.in/s/login/" style={helperLinkStyle}>Applicant
+                                        Portal</a>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template if:true={isPUCView}>
+                            <span class="slds-text-title_bold">{addedMessage}</span>
+                        </template>
+
+                        <!-- Sign In Mode -->
+                        <template if:true={isSignInMode}>
+                            <div class="email-row">
+                                <lightning-input label="Email" value={email} name="email" onchange={handleEmailChange}
+                                    type="email" disabled={verifyEmail} required></lightning-input>
+                                <template if:false={isVerifyEmailDisabled}>
+                                    <lightning-button variant="destructive" label="Verify Email"
+                                        onclick={sendEmailOtp}></lightning-button>
+                                </template>
+                            </div>
+                            <template if:true={showEmailOTP}>
+                                <template if:false={isEmailVerified}>
+                                    <div class="otp-row">
+                                        <lightning-input class="otp-input-small" max-length="6" label="Email OTP"
+                                            value={emailOtp} onchange={handleEmailOtpChange}
+                                            required={otpRequired}></lightning-input>
+                                        <lightning-button variant="destructive" label="Verify OTP"
+                                            onclick={verifyEmailOtp}></lightning-button>
+                                        <lightning-button variant="destructive" label="Resend OTP"
+                                            onclick={handleResendEmailOtp}></lightning-button>
+                                    </div>
+                                </template>
+                                <template if:true={resendEmailOtpMessage}>
+                                    <div class="slds-text-color_success slds-m-top_small">{resendEmailOtpMessage}</div>
+                                </template>
+                                <template if:true={emailOtpError}>
+                                    <div class="slds-text-color_error slds-m-top_small">Invalid OTP. Please try again.
+                                    </div>
+                                </template>
+                            </template>
+                        </template>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+
+    /**
+     * @description: Single-page LWC for student admission registration. Integrates all steps: email, details, OTP, program selection, declaration, and submission.
+     * @author: GitHub Copilot
+     * @group: Admissions
+     * @version: 1.0
+     * @Last Modified on: 2025-10-10
+     * @Last Modified by: GitHub Copilot
+     */
+    import { LightningElement, track, api, wire } from 'lwc';
+    import checkExistingEmail from '@salesforce/apex/StudentAdmissionSinglePageController.checkExistingEmail';
+    import sendOtp from '@salesforce/apex/StudentAdmissionSinglePageController.sendOtp';
+    import sendEmailOtp from '@salesforce/apex/StudentAdmissionSinglePageController.sendEmailOtp';
+    import verifyOtp from '@salesforce/apex/StudentAdmissionSinglePageController.verifyOtp';
+    import verifyEmailOtp from '@salesforce/apex/StudentAdmissionSinglePageController.verifyEmailOtp';
+    import getSchoolProgramCategoryData from '@salesforce/apex/StudentAdmissionSinglePageController.getSchoolProgramCategoryData';
+    import submitApplication from '@salesforce/apex/StudentAdmissionSinglePageController.submitApplication';
+    import redirectToPaymentPage from '@salesforce/apex/StudentAdmissionSinglePageController.redirectToPaymentPage';
+    import redirectToPaymentPageNew from '@salesforce/apex/StudentAdmissionSinglePageController.redirectToPaymentPageNew';
+    import getCountryCodePicklist from '@salesforce/apex/StudentAdmissionSinglePageController.getCountryCodePicklist';
+    import resendOtp from '@salesforce/apex/StudentAdmissionSinglePageController.resendOtp';
+    import getStatePicklist from '@salesforce/apex/StudentAdmissionSinglePageController.getStatePicklist';
+    import getCountryPicklist from '@salesforce/apex/StudentAdmissionSinglePageController.getCountryPicklist';
+    import getContactInfo from '@salesforce/apex/StudentAdmissionSinglePageController.getContactInfo';
+    import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+    import ADMISSIONPORTALASSETS from '@salesforce/resourceUrl/SR_ADMISSIONPORTALASSESTS';
+    //import Admission_BackgroundLogo from '@salesforce/resourceUrl/Admission_Background_Logo';
+    import getNameByEmail from '@salesforce/apex/StudentAdmissionSinglePageController.getNameByEmail';
+    import getSchoolPrograms from '@salesforce/apex/RegistrationFormUtility.getSchoolPrograms';
+    import redirectToApplicantPortal from '@salesforce/apex/StudentAdmissionSinglePageController.redirectToApplicantPortal';
+    import getProgramsBySchool from '@salesforce/apex/RegistrationFormUtility.getProgramsBySchool';
+    import banner from '@salesforce/resourceUrl/application_mob_bg';
+
+    const baseImageUrl = `${ADMISSIONPORTALASSETS}/AdmissionPortalAssets/Icons`;
+
+    export default class StudentAdmissionSinglePageNew extends LightningElement {
+        registrationProcessImageUrl = `${baseImageUrl}/registration-process.png`;
+        mobBackgroundStyle = `background-image: url(${banner});`;
+        //BannerImage=Admission_BackgroundLogo;
+        @api propYear = '2026';
+        @track state = '';
+        @track country = '';
+        @track stateOptions = [];
+        @track countryOptions = [];
+        // UI state
+        @track isVerified = false; // set true after successful OTP verification
+        @track isEmailVerified = false;
+        @track isSubmitting = false; // to prevent multiple submits
+        @track submitErrorMessage = '';
+        resendOtpMessage = '';
+        resendEmailOtpMessage = '';
+        @track email = '';
+        @track firstName = '';
+        @track lastName = '';
+        @track phoneCode = '';
+        @track mobileNumber = '';
+        @track otp = '';
+        @track emailoOtp = '';
+        @track expectedOtp = '';
+        @track leadId = '';
+        @track contactId = '';
+        @track school = '';
+        @track program = '';
+        @track category = '';
+        @track declarationChecked = false;
+        @track emailExists = false;
+        @track emailInvalid = false;
+        @track otpError = false;
+        @track emailOtpError = false;
+        @track phoneCodeOptions = [];
+        @track schoolOptions = [];
+        @track programOptions = [];
+        @track categoryOptions = [];
+        @track mobileErrorMessage = '';
+        @track disableEmail = false;
+        @track disable = true;
+        @track disablePhoneOtp = true;
+        @track disableSendOtp = true;
+        @track disableOtp = true;
+        @track disableCat = true;
+        @track disableSchool = true;
+        @track disableProgram = true;
+        @track disableDeclaration = true;
+        @track verifyEmail = false;
+        @track verifyPhone = true;
+        @track mobileOtp = true;
+        @track otherCountry = false;
+        @track showEmailOTP = false;
+        @track emailOtp = '';
+        @track showcountryCode = false;
+        @track showMobileOtp = false;
+        @track showCategory = false;
+        @track hideSendOtp = false;
+        // Paid admission view
+        @track showPaidView = false; // when true, show the "already registered/paid" page
+        @track IsshowPaidView = false;
+        @track paidName = '';
+        @track paidSchool = '';
+        @track paidProgram = '';
+        @track paidApplicationNumber = '';
+        @track paidMessage = '';
+        @track addedMessage = '';
+        @track isPUCView = false;
+        @track showSubmitMessage = false;
+        // Read-only contact fields to display near the title
+        @track programBatchName = '';
+        @track schoolName = '';
+        @track applicationNumber = '';
+        @track mobileError = '';
+        @track emaildisable = false;
+        @track oneClick = false;
+        @track isSignInMode = false;
+        @track isPaymentClicked = false;
+        @track showSpinner = false;
+        @track utmSource = '';
+        @track utmMedium = '';
+        @track utmCampaign = '';
+        // @track utmTerm = '';
+        // @track utmContent = '';
+        @track disableState = false;
+        @track disableCountry = false;
+        @track disableRegisterPageLink = false;
+        @api selectionMode = 'ApplicationFee';
+        @api selectedSchool = '';
+        @api selectedProgram = '';
+        schools = [];
+        programs = [];
+        schoolPrograms = new Map(); //Key = School Name, Value = Set() of Program Name (Display)s
+        programPB = new Map();
+
+        _allPhoneCodeOptions = [];
+        _allCategoryOptions = [];
+        _allStateOptions = [];
+        _allCountryOptions = [];
+        _allSchools = [];
+        _allPrograms = [];
+
+        saarcCountryOptions = [
+            { label: 'Afghanistan', value: 'Afghanistan' },
+            { label: 'Bangladesh', value: 'Bangladesh' },
+            { label: 'Bhutan', value: 'Bhutan' },
+            { label: 'India', value: 'India' },
+            { label: 'Maldives', value: 'Maldives' },
+            { label: 'Nepal', value: 'Nepal' },
+            { label: 'Pakistan', value: 'Pakistan' },
+            { label: 'Sri Lanka', value: 'Sri Lanka' }
+        ];
+
+        @track validationErrors = {};
+
+        @wire(getSchoolPrograms, { selectionMode: '$selectionMode' })
+        wiredSchoolPrograms({ data, error }) {
+
+            if (data) {
+
+                const BASE_SCHOOLS = [
+                    'School of Computer Science and Engineering'
+                ];
+
+                data.forEach(item => {
+
+                    let schoolName = item.School_Name__c;
+                    let programName = item.Program_Name_Display__c;
+
+                    if (!schoolName || !programName) return;
+
+                    BASE_SCHOOLS.forEach(base => {
+                        if (schoolName.startsWith(base)) {
+                            schoolName = base;
+                        }
+                    });
+
+                    if (!this.schoolPrograms.has(schoolName)) {
+                        this.schoolPrograms.set(schoolName, new Set());
+                    }
+
+                    this.schoolPrograms.get(schoolName).add(programName);
+
+                    this.programPB.set(programName, item.Program_Batch__c);
+
+                });
+
+                this.setSchoolOptions();
+            }
+
+            if (error) {
+                console.log(error);
+            }
+        }
+
+        async setSchoolOptions() {
+            this.schools = [];
+            this.schools.push({
+                value: '',
+                label: 'Select a School'
+            });
+            console.log(this.schoolPrograms.size);
+            for (const [school, programs] of this.schoolPrograms) {
+                this.schools.push({
+                    value: school,
+                    label: school
+                });
+            };
+            this._allSchools = [...this.schools];
+            const data = await getSchoolProgramCategoryData();
+            console.log('Category Data :' + data.categories);
+            this.categoryOptions = data.categories || [];
+            this._allCategoryOptions = [...this.categoryOptions];
+        }
+
+        setProgramOptions() {
+            this.programs = [];
+            this.programs.push({
+                value: '',
+                label: 'Select a Program'
+            });
+            // this.schoolPrograms.get(this.selectedSchool).forEach(program => {
+            if (this.school !== '') {
+                for (const program of this.schoolPrograms.get(this.school)) {
+                    this.programs.push({
+                        value: program,
+                        label: program
+                    });
+                };
+            }
+            this._allPrograms = [...this.programs];
+            //console.log(this.programs);   
+        }
+
+        handleStateChange(event) {
+            this.state = event.detail.value;
+        }
+        handleCountryChange(event) {
+            this.country = event.detail.value;
+        }
+        get showStatePicklist() {
+            return this.category === 'Non-Karnataka';
+        }
+        get showCountryPicklist() {
+            return this.category === 'Indian (SAARC)' || this.category === 'Non-Resident Indian(NRI)' || this.category === 'Foreign Nationals';
+        }
+
+        // Whether we have any contact info to show at the top
+        get hasContactInfo() {
+            return !!(this.programBatchName || this.schoolName || this.applicationNumber);
+        }
+        get isSendOtpDisabled() {
+            console.log('leadId : ' + !this.leadId + ': Email Verified : ' + !this.isEmailVerified + ' : Mobile number :' + !this.mobileNumber + ' isVerified : ' + this.isVerified);
+            return !this.leadId || !this.isEmailVerified || !this.mobileNumber || this.isVerified;
+        }
+
+        // Handler for resend button (calls Apex resendOtp)
+        handleResendOtp = async () => {
+            if (!this.leadId) return;
+            const newOtp = await resendOtp({ leadId: this.leadId, phoneCode: this.phoneCode });
+            this.expectedOtp = newOtp;
+            this.resendOtpMessage = 'A new OTP has been sent.';
+            this.otpError = false;
+            this.otp = '';
+        }
+        handleResendEmailOtp = async () => {
+            if (!this.leadId) return;
+            const newOtp = await resendOtp({ leadId: this.leadId, email: this.email });
+            this.expectedOtp = newOtp;
+            this.resendEmailOtpMessage = 'A new OTP has been sent.';
+            this.emailOtpError = false;
+            this.emailOtp = '';
+        }
+
+        connectedCallback() {
+            getCountryCodePicklist().then(data => {
+                this.phoneCodeOptions = data.map(item => {
+                    // Extracts "+91" from "India (+91)"
+                    const codeMatch = item.label.match(/\(([^)]+)\)/);
+                    const code = codeMatch ? `(${codeMatch[1]})` : '';
+                    const countryName = item.label.split('(')[0].trim();
+
+                    return {
+                        // Label becomes "(+91) | India"
+                        label: `${code} | ${countryName}`,
+                        value: item.value
+                    };
+                });
+                this._allPhoneCodeOptions = [...this.phoneCodeOptions];
+            });
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const emailParam = urlParams.get('c__email');
+            console.log('urlParams' + urlParams);
+            if (emailParam) {
+                this.email = decodeURIComponent(emailParam);
+                // Validate and set email state
+                this.emailInvalid = !this.validateEmail(this.email);
+                this.emaildisable = true;
+
+                // ✅ AUTO-POPULATE FIRST & LAST NAME
+                getNameByEmail({ email: this.email })
+                    .then(data => {
+                        if (data) {
+                            this.firstName = data.firstName || '';
+                            this.lastName = data.lastName || '';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching name:', error);
+                    });
+            }
+
+            // ✅ UTM parameters
+            this.utmSource = urlParams.get('utm_source') || 'direct';
+            this.utmMedium = urlParams.get('utm_medium') || 'direct';
+            this.utmCampaign = urlParams.get('utm_campaign') || 'direct';
+            // this.utmTerm     = urlParams.get('utm_term')     || '';
+            // this.utmContent  = urlParams.get('utm_content')  || '';
+
+        }
+
+        handleEmailChange(event) {
+            this.email = event.target.value;
+            this.emailInvalid = !this.validateEmail(this.email);
+        }
+
+        validateEmail(email) {
+            // Simple email regex
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        handleFirstNameChange(event) {
+            this.firstName = event.target.value;
+            this.updateSendOtpState();
+        }
+        handleLastNameChange(event) {
+            this.lastName = event.target.value;
+            this.updateSendOtpState();
+        }
+        handlePhoneCodeChange(event) {
+            this.phoneCode = event.detail.value;
+            // re-validate mobile when country code changes
+            this.validateMobileNumber();
+            this.updateSendOtpState();
+            this.mobileError = '';
+            if (this.phoneCode == '+91' || this.phoneCode == 'India (+91)') {
+                this.disableCat = true;
+            }
+        }
+        handleMobileChange(event) {
+            this.mobileNumber = event.target.value;
+            this.validateMobileNumber();
+            this.updateSendOtpState();
+        }
+
+        async validateMobileNumber() {
+            // Clear previous message
+            this.mobileErrorMessage = '';
+            if (!this.mobileNumber) return true;
+
+            // Remove non-digit characters
+            const digits = this.mobileNumber.replace(/[^0-9]/g, '');
+            const code = (this.phoneCode || '').toString();
+
+            // Check if country code is India (+91)
+            const isIndia = code === '+91' || code.includes('91');
+
+            if (isIndia) {
+                this.showCategory = false;
+                this.otherCountry = false;
+                if (digits.length !== 10) {
+                    this.mobileErrorMessage = 'Enter Valid Mobile Number';
+                    this.mobileOtp = true;
+                    return false;
+                } if (digits.length === 10 && this.phoneCode != '') {
+                    this.mobileOtp = false;
+                }
+            } else {
+                this.otherCountry = true;
+                this.disableCat = false;
+                this.showCategory = true;
+                // Fetch school/program/category data
+                // const data = await getSchoolProgramCategoryData();
+                // this.categoryOptions = data.categories || [];
+                // this.disableDeclaration = false;
+
+                // For other countries, you can allow flexible length (min 6, max 15 as example)
+                if (digits.length < 6 || digits.length > 25) {
+                    this.mobileErrorMessage = 'Mobile number length is invalid for the selected country.';
+                    this.mobileOtp = true;
+
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        handleOtpChange(event) {
+            this.otp = event.target.value;
+        }
+        handleEmailOtpChange(event) {
+            this.emailOtp = event.target.value;
+        }
+        // handleSchoolChange(event) {
+        //     this.school = event.detail.value;
+        // }
+        // handleProgramChange(event) {
+        //     this.program = event.detail.value;
+        // }
+
+
+        onSchoolChange(event) {
+
+            this.selectedProgram = '';
+            this.school = event.detail.value;
+
+            if (!this.disableSchool) {
+                this.selectedProgram = '';
+                this.program = '';
+            }
+
+            this.setProgramOptions();
+
+            if (!this.program) {
+                this.disableProgram = !this.school;
+            }
+
+        }
+
+        onProgramChange(event) {
+            this.program = event.target.value;
+
+        }
+
+        /*  handleCategoryChange(event) {
+              this.category = event.detail.value;
+              // Enable school after category is selected
+              if (!this.school) {
+              this.disableSchool = !this.category; 
+          }
+              // Show state picklist if Non-Karnataka
+              if (this.category === 'Non-Karnataka') {
+                  getStatePicklist().then(data => {
+                      this.stateOptions = data;
+                  });
+                   this.country = 'India';
+              } else if(this.category === 'Karnataka'){
+                  this.stateOptions = [];
+                  this.state = this.category;
+                  this.country = 'India';
+              }else if(this.category === 'SAARC' || this.category === 'Indian (SAARC)' ||this.category === 'Non-Resident Indian(NRI)'||this.category === 'Foreign Nationals' ) {
+                  getCountryPicklist().then(data => {
+                      this.countryOptions = data;
+                          this.state = '';
+                  });
+      
+              }else{
+                  this.stateOptions = [];
+                  this.state = '';
+              }
+          }*/
+
+
+        handleCategoryChange(event) {
+            this.category = event.detail.value;
+
+            if (!this.school) {
+                this.disableSchool = !this.category;
+            }
+
+            if (this.category === 'Non-Karnataka') {
+                getStatePicklist().then(data => {
+                    this.stateOptions = data.filter(state => state.value !== 'Karnataka' && state.label !== 'Karnataka');
+                    this._allStateOptions = [...this.stateOptions];
+                });
+                if (!this.disableCountry) this.country = 'India';
+
+            } else if (this.category === 'Karnataka') {
+                this.stateOptions = [];
+                this._allStateOptions = [];
+                if (!this.disableState) this.state = 'Karnataka';
+                if (!this.disableCountry) this.country = 'India';
+
+            } else if (
+                this.category === 'SAARC' ||
+                this.category === 'Indian (SAARC)'
+            ) {
+                // ✅ ONLY SAARC COUNTRIES
+                this.countryOptions = this.saarcCountryOptions;
+                this._allCountryOptions = [...this.saarcCountryOptions];
+                if (!this.disableState) this.state = '';
+
+            } else if (
+                this.category === 'Non-Resident Indian(NRI)' ||
+                this.category === 'Foreign Nationals'
+            ) {
+                // ✅ ALL COUNTRIES
+                getCountryPicklist().then(data => {
+                    this.countryOptions = data;
+                    this._allCountryOptions = [...data];
+                });
+                if (!this.disableState) this.state = '';
+
+            }
+        }
+
+        handleDeclarationChange(event) {
+            this.declarationChecked = event.target.checked;
+            if (this.declarationChecked == true) {
+                this.disableDeclaration = false;
+            }
+        }
+
+        updateSendOtpState() {
+            // Enable Send OTP if firstName, lastName, phone, and country code are filled
+            const mobileValid = !this.mobileErrorMessage;
+            const emailValid = this.email && !this.emailInvalid;
+            this.disableSendOtp = !(emailValid && this.firstName && this.lastName && this.mobileNumber && this.phoneCode && mobileValid);
+        }
+
+        // OTP input required flag for template
+        get otpRequired() {
+            return !this.disableOtp;
+        }
+
+
+        get isCheckEmailButtonDisabled() {
+            return !this.email || this.emailInvalid || this.disableEmail;
+        }
+
+        // Disable Verify Email button until a valid email is entered or after it has been clicked
+        /*get isVerifyEmailDisabled() {
+            // return !this.email ||!this.lastName ||!this.firstName || this.emailInvalid || this.verifyEmail;
+            return !this.leadId || this.isEmailVerified;
+        } */
+
+        get isVerifyEmailDisabled() {
+            if (this.isSignInMode) {
+                return !this.email || this.emailInvalid;
+            }
+            return !this.leadId || this.isEmailVerified;
+        }
+
+
+        sendOtp = async () => {
+            this.mobileError = ''; // reset previous error
+            const extractedCode = this.phoneCode.match(/\(\+\d+\)/)?.[0].replace(/[()]/g, '');
+            const combinedNumber = `${extractedCode}-${this.mobileNumber}`;
+            try {
+                const result = await sendOtp({
+                    leadId: this.leadId,
+                    phoneCode: this.phoneCode,
+                    mobileNumber: combinedNumber,
+                    email: this.email
+                });
+                this.expectedOtp = result.otp;
+                this.leadId = result.leadId;
+                this.verifyPhone = false;
+                this.showMobileOtp = true;
+                this.disablePhoneOtp = false;
+                this.mobileOtp = true;
+                this.disable = true;
+                this.disableCat = true;
+                // disable Send OTP button
+                this.otherCountry = true;
+            } catch (error) {
+                console.error('OTP Error:', error);
+                console.log(' error.body:', error.body);
+                console.error('error.body.message:', error.body.message);
+                if (error.body && error.body.message === 'DUPLICATE_MOBILE') {
+                    this.mobileError = 'This mobile number is already registered.';
+                } else {
+                    this.mobileError = 'Wrong mobile Number. Please try again.';
+                }
+            }
+        };
+
+
+        sendEmailOtp = async () => {
+
+            if ((!this.firstName || !this.lastName || !this.email) && this.isSignInMode == false) {
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Missing Information',
+                        message: 'Please fill in First Name, Last Name, and Email before verifying.',
+                        variant: 'error'
+                    })
+                );
+                return; // stop execution
+            }
+            console.log('Sending OTP to:', this.leadId);
+            if (this.leadId) {
+                this.oneClick = true;
+                // Revisit OTP flow
+                const newOtp = await resendOtp({ leadId: this.leadId });
+                this.expectedOtp = newOtp;
+                // Enable OTP field
+                this.disableOtp = false;
+                this.verifyEmail = true;
+                this.showEmailOTP = true;
+            } else {
+                this.oneClick = true;
+                // New lead OTP flow
+                const result = await sendEmailOtp({
+                    email: this.email, firstName: this.firstName, lastName: this.lastName,
+                    utmSource: this.utmSource,
+                    utmMedium: this.utmMedium,
+                    utmCampaign: this.utmCampaign,
+                    // utmTerm: this.utmTerm,
+                    // utmContent: this.utmContent
+                });
+                this.expectedOtp = result.otp;
+                this.leadId = result.leadId;
+                // Enable OTP field
+                this.disableOtp = false;
+                this.verifyEmail = true;
+                this.showEmailOTP = true;
+            }
+        }
+
+        verifyOtp = async () => {
+            // Call Apex with leadId and otp
+            const valid = await verifyOtp({ leadId: this.leadId, otp: this.otp });
+            if (valid) {
+                this.disable = true;
+
+                this.otpError = false;
+                this.disableCat = false;
+                this.showCategory = true;
+                // Mark as verified and disable further OTP acstions
+                this.isVerified = true;
+                this.verifyPhone = true;
+                this.resendOtpMessage = '';
+                this.disableOtp = true;
+                this.showSubmitMessage = true;
+                // Fetch school/program/category data
+                // const data = await getSchoolProgramCategoryData();
+                // this.categoryOptions = data.categories || [];
+                // this.disableDeclaration = false;
+            } else {
+                this.otpError = true;
+            }
+        }
+
+        verifyEmailOtp = async () => {
+
+            try {
+                const result = await verifyEmailOtp({ leadId: this.leadId, otp: this.emailOtp });
+                console.log('result' + JSON.stringify(result));
+                if (result.isVerified) {
+                    this.isSignInMode = false;
+                    this.contactId = result.recordId;
+                    console.log('Verified Record Type:', result.recordType); // 'Lead' or 'Contact'
+                    this.emailOtpError = false;
+                    this.isEmailVerified = true;
+                    this.disableOtp = true;
+                    this.resendEmailOtpMessage = '';
+                    this.showcountryCode = true;
+                    this.firstName = result.firstName;
+                    this.lastName = result.lastName;
+                    // this.hideSendOtp = true;
+                    if (result.recordType === 'Lead') {
+                        this.disable = false;
+                        this.showPaidView = false;
+                        console.log('mobileNumber:' + result.mobileNumber);
+                        // const data = await getSchoolProgramCategoryData();
+                        // this.categoryOptions = data.categories || [];
+
+                        if (result.mobileNumber && result.phoneCode) {
+                            //   this.mobileNumber = result.mobileNumber.replace('+91-','').replace('+91','');
+                            this.mobileNumber = result.mobileNumber.replace(/^\+\d+-/, '');
+                            this.phoneCode = result.phoneCode;
+                            this.disable = true;
+                            // ✅ MARK MOBILE AS VERIFIED
+                            this.isVerified = false;
+                            this.verifyPhone = false;
+                            this.showMobileOtp = false;
+                            this.otherCountry = false;
+                            this.disableOtp = true;
+
+                            const code = (this.phoneCode || '').toString();
+                            // Check if country code is NOT India (+91)
+                            const isNotIndia = !(code === '+91' || code.includes('91'));
+
+                            if (result.mobOtpVerified || isNotIndia) {
+                                this.isVerified = true;
+                            }
+                            // ✅ ENABLE CATEGORY FLOW DIRECTLY
+                            /*  this.disableCat = false;
+                             this.showCategory = true;
+         
+                             // Load category data
+                             const data = await getSchoolProgramCategoryData();
+                             this.categoryOptions = data.categories || []; */
+                        }
+                        this.showCategory = true;
+                        if (result.category) {
+                            this.category = result.category;
+                            this.disableCat = true; // Enable category dropdown
+                            //this.showCategory = true;
+                            // Manually call handleCategoryChange to load state/country options if needed for that category
+                            // and enable the school/program picklists.
+                            this.handleCategoryChange({ detail: { value: this.category } });
+
+                            if (result.state) {
+                                this.state = result.state;
+                                this.disableState = true;
+                            } else {
+                                this.disableState = false;
+                            }
+
+                            // Populate and Lock Country
+                            if (result.country) {
+                                this.country = result.country;
+                                this.disableCountry = true;
+                            } else {
+                                this.disableCountry = false;
+                            }
+                        } else {
+                            this.disableCat = false; // UNLOCK to allow editing
+                        }
+                        if (result.school) {
+                            this.school = result.school;
+                            this.selectedSchool = result.school;
+                            this.setProgramOptions();
+                            this.disableSchool = true; // LOCK because data exists
+                        } else {
+                            // Only unlock school if category is already selected
+                            this.disableSchool = this.category ? false : true;
+                        }
+
+                        // 4. Handle Program (Lock if exists, unlock if empty)
+                        if (result.program) {
+                            this.program = result.program;
+                            this.selectedProgram = result.program;
+                            this.disableProgram = true; // LOCK because data exists
+                        } else {
+                            // Only unlock program if school is selected
+                            this.disableProgram = this.school ? false : true;
+                        }
+                    } else if (result.recordType === 'Contact') {
+                        this.disable = true;
+                        this.emailExists = true;
+                        this.showPaidView = false;
+
+                    } else if (result.recordType === 'Contact_Paid') {
+                        // Show the admission/registered page with details (add-on, doesn't change existing flows)
+                        this.showPaidView = true;
+                        this.IsshowPaidView = true;
+                        this.isSignInMode = false;
+                        // Fetch contact info and populate the paid view fields
+                        try {
+                            const infoPaid = await getContactInfo({ contactId: this.contactId });
+                            this.paidName = result.recordName || (this.firstName || '') + (this.lastName ? ' ' + this.lastName : '');
+                            this.paidSchool = infoPaid.schoolName || result.schoolName || result.School || this.school || '';
+                            // Combine program and batch display if available
+                            this.paidProgram = infoPaid.programBatchName || result.programName || result.Program || result.program || this.program || '';
+                            this.paidApplicationNumber = infoPaid.applicationNumber || result.applicationNumber || result.Application_Number__c || result.appNumber || this.contactId || result.recordId || '';
+                            this.paidMessage = result.message || 'We will soon get in touch with you. Please note the above information for further reference.';
+                            this.addedMessage = result.message || 'Please check your registered email to reset your password.';
+                        } catch (err) {
+                            console.error('Error fetching contact info for paid contact:', err);
+                        }
+
+                    }
+                } else {
+                    this.emailOtpError = true;
+                }
+            } catch (error) {
+                console.error('Error verifying OTP:', error);
+            }
+        }
+
+        goToDeclaration = () => {
+            // Not needed in new UI logic
+        }
+        PaymentPage() {
+            console.log('Redirecting to payment page for applicationId:', this.contactId);
+            redirectToPaymentPage({ applicationId: this.contactId }).then(paymentUrl => {
+                // window.location.href = paymentUrl;
+
+                window.open(paymentUrl, '_blank');
+            });
+            this.isPaymentClicked = true;
+        }
+        PaymentPageNew() {
+            console.log('Redirecting to new payment page for applicationId:', this.contactId);
+            redirectToPaymentPageNew({ applicationId: this.contactId }).then(paymentUrl => {
+                // window.location.href = paymentUrl;
+
+                window.open(paymentUrl, '_blank');
+            });
+            this.isPaymentClicked = true;
+        }
+
+        // Change 06-03-2026
+        // submitApplication = async () => {
+        //     if (this.isSubmitting) return; // prevent double submit
+        //     this.isSubmitting = true;
+        //     this.submitErrorMessage = '';
+
+        //      const paymentWindow = window.open('', '_blank');
+
+        // try {
+
+        //     const studentData = {
+        //         leadId: this.leadId,
+        //         email: this.email,
+        //         firstName: this.firstName,
+        //         lastName: this.lastName,
+        //         phoneCode: this.phoneCode,
+        //         mobileNumber: this.mobileNumber,
+        //         school: this.school,
+        //         program: this.program,
+        //         category: this.category,
+        //         state: this.state,
+        //         country: this.country
+        //     };
+
+        //         const appId = await submitApplication({ studentData });
+        //         const paymentUrl = await redirectToPaymentPage({ applicationId: appId });
+        //         //window.location.href = paymentUrl;
+        //         // window.open(paymentUrl, '_blank', 'noopener,noreferrer');
+        //         paymentWindow.location.href = paymentUrl;
+
+        //     } catch (err) {
+        //         // Re-enable submit on error and show message
+        //         this.submitErrorMessage = 'Submission failed. Please try again.';
+        //         this.isSubmitting = false;
+        //         // Optionally log error
+        //         // console.error(err);
+        //     }
+        // }
+
+        /* 16-03-2025
+        submitApplication = async () => {
+            // ✅ Validate all fields before proceeding
+            if (!this.validateForm()) {
+                return; // Stop submission, errors are shown in template
+            }
+    
+            if (this.isSubmitting) return; // prevent double submit
+            this.isSubmitting = true;
+            this.submitErrorMessage = '';
+            this.showSpinner= true;
+            this.disableRegisterPageLink = true;
+            // const paymentWindow = window.open('', '_blank');
+    
+            try {
+                const studentData = {
+                    leadId: this.leadId,
+                    email: this.email,
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    phoneCode: this.phoneCode,
+                    mobileNumber: this.mobileNumber,
+                    school: this.school,
+                    program: this.program,
+                    category: this.category,
+                    state: this.state,
+                    country: this.country
+                };
+                this.showSpinner = false;
+                const appId = await submitApplication({ studentData }); 
+                // const paymentUrl = await redirectToPaymentPage({ applicationId: appId });
+                const paymentUrl = await redirectToPaymentPageNew({ applicationId: appId });
+                // paymentWindow.location.href = paymentUrl;
+                 window.location.href = paymentUrl;
+    
+            } catch (err) {
+                this.showSpinner = false;
+                this.submitErrorMessage = 'Submission failed. Please try again.';
+                this.isSubmitting = false;
+            }
+        } */
+
+        /* submitApplication = async () => {
+             if (this.isSubmitting) return; // prevent double submit
+             this.isSubmitting = true;
+             this.submitErrorMessage = '';
+             this.showSpinner= true;
+             // const paymentWindow = window.open('', '_blank');
+     
+         // try {
+     
+             const studentData = {
+                 leadId: this.leadId,
+                 email: this.email,
+                 firstName: this.firstName,
+                 lastName: this.lastName,
+                 phoneCode: this.phoneCode,
+                 mobileNumber: this.mobileNumber,
+                 school: this.school,
+                 program: this.program,
+                 category: this.category,
+                 state: this.state,
+                 country: this.country
+             };
+         
+                 // const appId = await submitApplication({ studentData });
+                 // const paymentUrl = await redirectToPaymentPage({ applicationId: appId });
+                 // //window.location.href = paymentUrl;
+                 // // window.open(paymentUrl, '_blank', 'noopener,noreferrer');
+                 // paymentWindow.location.href = paymentUrl;
+     
+                console.log('studentData:'+JSON.stringify(studentData));
+                  submitApplication({ studentData })
+             .then(appId => {
+                 // 👉 second async call
+                 return redirectToPaymentPage({ applicationId: appId });
+                 
+             })
+             .then(paymentUrl => {
+                 const paymentWindow = window.open('', '_blank');
+                 // ✅ redirect only when URL is ready
+                 paymentWindow.location.href = paymentUrl;
+                 this.showSpinner = false;
+             })
+             .catch(error => {
+                 this.submitErrorMessage = 'Submission failed. Please try again.';
+                 this.isSubmitting = false;
+                 this.showSpinner = false;
+                 // console.error(error);
+             });
+     
+             
+             // } catch (err) {
+             //     // Re-enable submit on error and show message
+             //     this.submitErrorMessage = 'Submission failed. Please try again.';
+             //     this.isSubmitting = false;
+             //     // Optionally log error
+             //     // console.error(err);
+             // }
+         }*/
+
+        // Change 06-03-2026
+        // get isSubmitDisabled() {
+        //     return !this.declarationChecked || this.disableDeclaration || this.isSubmitting;
+        // }
+
+        // Change 06-03-2026
+        submitApplication = async () => {
+
+            if (!this.validateForm()) {
+                return;
+            }
+
+            if (this.isSubmitting) return;
+
+            this.isSubmitting = true;
+
+            try {
+
+                const studentData = {
+                    leadId: this.leadId,
+                    email: this.email,
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    phoneCode: this.phoneCode,
+                    mobileNumber: this.mobileNumber,
+                    category: this.category,
+                    state: this.state,
+                    country: this.country,
+                    school: this.school,
+                    program: this.program,
+                    utmSource: this.utmSource,
+                    utmMedium: this.utmMedium,
+                    utmCampaign: this.utmCampaign
+                };
+
+                const result = await submitApplication({ studentData });
+
+                if (!this.leadId) {
+
+                    this.leadId = result;
+
+                    this.verifyEmail = false;
+                    this.oneClick = false;
+
+                    this.dispatchEvent(
+                        new ShowToastEvent({
+                            title: 'Warning',
+                            message: 'Please verify your Email and Mobile number to proceed',
+                            variant: 'warning'
+                        })
+                    );
+
+                    this.isSubmitting = false;
+                }
+                else {
+
+                    const paymentUrl = await redirectToPaymentPageNew({
+                        applicationId: result
+                    });
+
+                    window.location.href = paymentUrl;
+
+                }
+
+            } catch (error) {
+                console.error(error);
+
+                let message = error?.body?.message;
+
+                if (message === 'EMAIL_EXISTS') {
+                    this.submitErrorMessage = 'Email is already registered. Click on Incomplete Registration to continue with your existing application.';
+                }
+                else if (message === 'MOBILE_EXISTS') {
+                    this.submitErrorMessage = 'This mobile number already registered, please try with new one.';
+                }
+                else if (message === 'EMAIL_MOBILE_EXISTS') {
+                    this.submitErrorMessage = 'Email and mobile already registered. Click Incomplete Registration to resume or use new details.';
+                }
+                else {
+                    this.submitErrorMessage = 'Submission failed. Please try again.';
+                }
+
+                this.isSubmitting = false;
+            }
+        };
+        get isSubmitDisabled() {
+            return this.isSubmitting;
+        }
+
+        get disableDeclarationCheck() {
+            return !this.categoryOptions || !this.program;
+        }
+
+        get submitLabel() {
+            return this.isSubmitting ? 'Submitting...' : 'Submit';
+        }
+
+        get sendOtpDisabled() {
+            return this.disableOtp;
+        }
+
+        get resendOtpDisabled() {
+            return this.disableOtp || this.isVerified;
+        }
+
+        get verifyDisabled() {
+            return this.disableOtp || this.isVerified;
+        }
+        get sendEmailOtpDisabled() {
+            return this.isEmailVerified || this.disableOtp;
+        }
+
+
+        handleSignIn() {
+            this.isSignInMode = true;
+            this.showPaidView = true;
+
+            // Reset email verification state for the sign-in flow
+            this.verifyEmail = false;
+            this.email = '';
+            this.isEmailVerified = false;
+            this.showEmailOTP = false;
+            this.emailOtp = '';
+            this.emailOtpError = false;
+            this.leadId = '';
+        }
+
+        handleApplicantPortal = async () => {
+            const paymentUrl = await redirectToApplicantPortal();
+            console.log('paymentUrl :' + paymentUrl);
+            window.location.href = paymentUrl;
+            // window.open(paymentUrl, '_blank');
+        }
+
+        validateForm() {
+            const errors = {};
+
+            // First Name
+            if (!this.firstName || !this.firstName.trim()) {
+                errors.firstName = 'First Name is required.';
+            }
+
+            // Last Name
+            if (!this.lastName || !this.lastName.trim()) {
+                errors.lastName = 'Last Name is required.';
+            }
+
+            // Email format
+            if (!this.email || this.emailInvalid) {
+                errors.email = 'Please enter a valid email address.';
+            }
+
+            // Email verified
+            if (this.leadId && !this.isEmailVerified) {
+                errors.emailVerified = 'Email must be verified.';
+            }
+
+            // ── FIX 1: Phone code dropdown must be selected ──────────────────
+            if (!this.phoneCode) {
+                errors.phoneCode = 'Please select a country code.';
+            }
+
+            // ── FIX 2: Mobile number must not be empty ───────────────────────
+            if (!this.mobileNumber || !this.mobileNumber.trim()) {
+                errors.mobileNumber = 'Mobile number is required.';
+            } else if (this.mobileErrorMessage) {
+                // Propagate any async validation error already set by validateMobileNumber()
+                errors.mobileNumber = this.mobileErrorMessage;
+            }
+
+            // ── FIX 3: OTP verification — covers both Indian and foreign flows ─
+            // For Indian numbers: OTP must be verified.
+            // For foreign numbers: phone code must still be selected (checked above).
+            // The old guard was `if (this.leadId && !this.otherCountry && !this.isVerified)`
+            // which silently passed when mobileNumber was blank (no leadId yet).
+            if (this.leadId && !this.otherCountry && !this.isVerified) {
+                errors.mobileVerified = 'Mobile number must be verified via OTP.';
+            }
+
+            // Category
+            if (!this.category) {
+                errors.category = 'Category is required.';
+            }
+
+            // State (only when Non-Karnataka category)
+            if (this.showStatePicklist && !this.state) {
+                errors.state = 'State is required.';
+            }
+
+            // Country (only when applicable category)
+            if (this.showCountryPicklist && !this.country) {
+                errors.country = 'Country is required.';
+            }
+
+            // School
+            if (!this.school) {
+                errors.school = 'School is required.';
+            }
+
+            // Program
+            if (!this.program) {
+                errors.program = 'Program is required.';
+            }
+
+            // Declaration checkbox
+            if (!this.declarationChecked) {
+                errors.declaration = 'You must authorise REVA to contact you before submitting.';
+            }
+
+            this.validationErrors = errors;
+            return Object.keys(errors).length === 0;
+        }
+
+        /*==============================================
+      INLINE DROPUP HANDLERS
+      Paste this entire block INSIDE the class body
+      of studentAdmissionSinglePageNew.js —
+      just before the final closing  }
+    ==============================================*/
+
+        // ── Open/close flags ──────────────────────────────────
+        @track phoneCodeOpen = false;
+        @track categoryOpen = false;
+        @track stateOpen = false;
+        @track countryOpen = false;
+        @track schoolOpen = false;
+        @track programOpen = false;
+
+        // ── Floating list position (position:fixed) ───────────
+        @track dropPos = { bottom: 0, left: 0, minWidth: 200, maxWidth: 400 };
+
+        _setDropPos(event) {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const card = event.currentTarget.closest('.admission-card');
+            const cardRect = card ? card.getBoundingClientRect() : null;
+            const left = rect.left;
+            const minWidth = rect.width;
+            const maxWidth = cardRect ? (cardRect.right - left) : minWidth;
+            this.dropPos = {
+                bottom: window.innerHeight - rect.top + 2,
+                left: left,
+                minWidth: minWidth,
+                maxWidth: maxWidth
+            };
+        }
+
+        get dropStyle() {
+            return `bottom:${this.dropPos.bottom}px;left:${this.dropPos.left}px;width:${this.dropPos.minWidth}px;`;
+        }
+
+        // ── Close all ─────────────────────────────────────────
+        _closeAll() {
+            this.phoneCodeOpen = false;
+            this.categoryOpen = false;
+            this.stateOpen = false;
+            this.countryOpen = false;
+            this.schoolOpen = false;
+            this.programOpen = false;
+
+            // Restore original options to clear the search filter
+            if (this._allPhoneCodeOptions && this._allPhoneCodeOptions.length > 0) this.phoneCodeOptions = this._allPhoneCodeOptions;
+            if (this._allCategoryOptions && this._allCategoryOptions.length > 0) this.categoryOptions = this._allCategoryOptions;
+            if (this._allStateOptions && this._allStateOptions.length > 0) this.stateOptions = this._allStateOptions;
+            if (this._allCountryOptions && this._allCountryOptions.length > 0) this.countryOptions = this._allCountryOptions;
+            if (this._allSchools && this._allSchools.length > 0) this.schools = this._allSchools;
+            if (this._allPrograms && this._allPrograms.length > 0) this.programs = this._allPrograms;
+
+            // Clear search inputs in the template DOM
+            const inputs = this.template.querySelectorAll('.dropdown-search-input');
+            inputs.forEach(input => {
+                input.value = '';
+            });
+        }
+
+        // Helper to focus search input inside the dropup
+        focusSearchInput() {
+            setTimeout(() => {
+                const input = this.template.querySelector('.dropup-list .dropdown-search-input');
+                if (input) {
+                    input.focus();
+                }
+            }, 80);
+        }
+
+        // ── Dropup Search handlers ─────────────────────────────
+        handlePhoneCodeSearch(event) {
+            const term = event.target.value.toLowerCase();
+            this.phoneCodeOptions = this._allPhoneCodeOptions.filter(opt =>
+                opt.label.toLowerCase().includes(term)
+            );
+        }
+
+        handleCategorySearch(event) {
+            const term = event.target.value.toLowerCase();
+            this.categoryOptions = this._allCategoryOptions.filter(opt =>
+                opt.label.toLowerCase().includes(term)
+            );
+        }
+
+        handleStateSearch(event) {
+            const term = event.target.value.toLowerCase();
+            this.stateOptions = this._allStateOptions.filter(opt =>
+                opt.label.toLowerCase().includes(term)
+            );
+        }
+
+        handleCountrySearch(event) {
+            const term = event.target.value.toLowerCase();
+            this.countryOptions = this._allCountryOptions.filter(opt =>
+                opt.label.toLowerCase().includes(term) || opt.value.toLowerCase().includes(term)
+            );
+        }
+
+        handleSchoolSearch(event) {
+            const term = event.target.value.toLowerCase();
+            this.schools = this._allSchools.filter(opt =>
+                opt.label.toLowerCase().includes(term)
+            );
+        }
+
+        handleProgramSearch(event) {
+            const term = event.target.value.toLowerCase();
+            this.programs = this._allPrograms.filter(opt =>
+                opt.label.toLowerCase().includes(term)
+            );
+        }
+
+        // ── Label display getters ─────────────────────────────
+        get phoneCodeLabelDisplay() {
+            const f = (this.phoneCodeOptions || []).find(o => o.value === this.phoneCode);
+            return f ? f.label : 'Select Code';
+        }
+        get categoryLabelDisplay() {
+            const f = (this.categoryOptions || []).find(o => o.value === this.category);
+            return f ? f.label : 'Select Category';
+        }
+        get stateLabelDisplay() {
+            const f = (this.stateOptions || []).find(o => o.value === this.state);
+            return f ? f.label : 'Select State';
+        }
+        get countryLabelDisplay() {
+            const f = (this.countryOptions || []).find(o => o.value === this.country);
+            return f ? f.label : 'Select Country';
+        }
+        get schoolLabelDisplay() {
+            const f = (this.schools || []).find(o => o.value === this.selectedSchool);
+            return f ? f.label : 'Select School';
+        }
+        get programLabelDisplay() {
+            const f = (this.programs || []).find(o => o.value === this.selectedProgram);
+            return f ? f.label : 'Select Program';
+        }
+
+        // ── Trigger box CSS (active = blue border) ────────────
+        get phoneCodeTriggerClass() { return 'dropup-trigger' + (this.phoneCodeOpen ? ' active' : ''); }
+        get categoryTriggerClass() { return 'dropup-trigger' + (this.categoryOpen ? ' active' : ''); }
+        get stateTriggerClass() { return 'dropup-trigger' + (this.stateOpen ? ' active' : ''); }
+        get countryTriggerClass() { return 'dropup-trigger' + (this.countryOpen ? ' active' : ''); }
+        get schoolTriggerClass() { return 'dropup-trigger' + (this.schoolOpen ? ' active' : ''); }
+        get programTriggerClass() { return 'dropup-trigger' + (this.programOpen ? ' active' : ''); }
+
+        // ── Text span CSS (grey placeholder vs dark selected) ─
+        get phoneCodeTextClass() { return 'dropup-trigger-text'; } // always dark — default is (+91) India
+        get categoryTextClass() { return 'dropup-trigger-text' + (!this.category ? ' placeholder' : ''); }
+        get stateTextClass() { return 'dropup-trigger-text' + (!this.state ? ' placeholder' : ''); }
+        get countryTextClass() { return 'dropup-trigger-text' + (!this.country ? ' placeholder' : ''); }
+        get schoolTextClass() { return 'dropup-trigger-text' + (!this.selectedSchool ? ' placeholder' : ''); }
+        get programTextClass() { return 'dropup-trigger-text' + (!this.selectedProgram ? ' placeholder' : ''); }
+
+        // ── Wrapper CSS class ─────────────────────────────────
+        get phoneCodeDropClass() { return 'dropup-wrapper'; }
+        get categoryDropClass() { return 'dropup-wrapper'; }
+        get stateDropClass() { return 'dropup-wrapper'; }
+        get countryDropClass() { return 'dropup-wrapper'; }
+        get schoolDropClass() { return 'dropup-wrapper'; }
+        get programDropClass() { return 'dropup-wrapper'; }
+
+        // ── Toggle handlers ───────────────────────────────────
+        togglePhoneCodeDrop(event) {
+            const wasOpen = this.phoneCodeOpen; this._closeAll();
+            if (!wasOpen) { this._setDropPos(event); this.phoneCodeOpen = true; this.focusSearchInput(); }
+        }
+        toggleCategoryDrop(event) {
+            const wasOpen = this.categoryOpen; this._closeAll();
+            if (!wasOpen) { this._setDropPos(event); this.categoryOpen = true; this.focusSearchInput(); }
+        }
+        toggleStateDrop(event) {
+            const wasOpen = this.stateOpen; this._closeAll();
+            if (!wasOpen) { this._setDropPos(event); this.stateOpen = true; this.focusSearchInput(); }
+        }
+        toggleCountryDrop(event) {
+            const wasOpen = this.countryOpen; this._closeAll();
+            if (!wasOpen) { this._setDropPos(event); this.countryOpen = true; this.focusSearchInput(); }
+        }
+        toggleSchoolDrop(event) {
+            const wasOpen = this.schoolOpen; this._closeAll();
+            if (!wasOpen) { this._setDropPos(event); this.schoolOpen = true; this.focusSearchInput(); }
+        }
+        toggleProgramDrop(event) {
+            const wasOpen = this.programOpen; this._closeAll();
+            if (!wasOpen) { this._setDropPos(event); this.programOpen = true; this.focusSearchInput(); }
+        }
+
+        // ── Select handlers (call existing business logic) ────
+        selectPhoneCode(event) {
+            event.stopPropagation();
+            this.phoneCode = event.currentTarget.dataset.value;
+            this._closeAll();
+            this.handlePhoneCodeChange({ detail: { value: this.phoneCode } });
+        }
+        selectCategory(event) {
+            event.stopPropagation();
+            this.category = event.currentTarget.dataset.value;
+            this._closeAll();
+            this.handleCategoryChange({ detail: { value: this.category } });
+        }
+        selectState(event) {
+            event.stopPropagation();
+            this.state = event.currentTarget.dataset.value;
+            this._closeAll();
+        }
+        selectCountry(event) {
+            event.stopPropagation();
+            this.country = event.currentTarget.dataset.value;
+            this._closeAll();
+        }
+        selectSchool(event) {
+            event.stopPropagation();
+            this.selectedSchool = event.currentTarget.dataset.value;
+            this._closeAll();
+            this.onSchoolChange({ detail: { value: this.selectedSchool } });
+        }
+        selectProgram(event) {
+            event.stopPropagation();
+            this.selectedProgram = event.currentTarget.dataset.value;
+            this.program = this.selectedProgram;
+            this._closeAll();
+        }
+
+    }
+</script>

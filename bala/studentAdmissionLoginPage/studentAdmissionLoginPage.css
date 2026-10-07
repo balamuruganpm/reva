@@ -1,0 +1,1860 @@
+/* Input focus — red ring matching CustomForgotPasswordNew */
+input:focus {
+    border-color: #c0392b !important;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.14) !important;
+    outline: none !important;
+}
+
+/* Login button hover — matches CustomForgotPasswordNew reset button */
+button:hover:not(:disabled) {
+    opacity: 0.88;
+    transform: translateY(-1px);
+    transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Helper & register link hover */
+a:hover {
+    text-decoration: underline !important;
+}
+
+/* lightning-input customization to match studentAdmissionSinglePageNew */
+lightning-input {
+    --slds-c-input-radius-border: 6px;
+    --slds-c-input-sizing-height: 38px;
+    --slds-c-input-color-border: #727272;
+    --slds-c-input-shadow-focus: 0 0 3px rgba(114,114,114,.5);
+    font-family: 'Nunito Sans', NunitoSans, sans-serif !important;
+}
+
+.error-msg {
+    font-size: 0.84rem;
+    color: #c0392b;
+    font-weight: 600;
+    background: #fff5f5;
+    border-left: 3px solid #c0392b;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    font-family: 'Nunito Sans', NunitoSans, sans-serif;
+    box-sizing: border-box;
+}
+
+:host {
+    display: block;
+    font-family: "Roboto Slab", serif !important;
+    width: 100vw !important;
+    position: relative;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: "Roboto Slab", serif !important;
+}
+
+/* =============================================
+   FLOATING HEADER
+   ============================================= */
+.reva-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 48px;
+    z-index: 10;
+    box-sizing: border-box;
+    background-color: transparent;
+    transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reva-header.scrolled {
+    background-color: #000000 !important;
+    padding: 20px 48px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.reva-logo {
+    height: 70px;
+    width: auto;
+}
+
+.naac-badge {
+    height: 65px;
+    width: auto;
+}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.hero-section {
+    min-height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 180px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+.content-row {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.hero-column {
+    flex: 1;
+    padding-right: 40px;
+    padding-left: 5rem;
+    color: #ffffff;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+.form-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero Typography */
+.font-39 {
+    font-size: 27px;
+    line-height: 1.3;
+    margin: 10px 0;
+    font-weight: 300;
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.font-78 {
+    font-size: 62px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 15px 0;
+    font-family: "Roboto Slab", serif !important;
+}
+
+.clr-red {
+    color: #e22a27;
+}
+
+.fw-light {
+    font-weight: 300;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.apply-btn {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #e22a27 !important;
+    padding: 12px 35px;
+    font-size: 27px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.apply-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #e22a27;
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+    z-index: -1;
+}
+
+.apply-btn:hover::before {
+    transform: translateX(0);
+}
+
+.apply-btn:hover {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+.auth-card {
+    scroll-margin-top: 120px;
+}
+
+@media (max-width: 1200px) {
+    .font-78 {
+        font-size: 42px;
+    }
+
+    .hero-section {
+        padding-bottom: 30px;
+    }
+
+    .reva-header.scrolled {
+        background-color: #000000 !important;
+        padding: 20px 8px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .font-39 {
+        font-size: 20px;
+    }
+
+    .reva-logo,
+    .naac-badge {
+        height: 40px;
+    }
+
+    .content-row {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .hero-column {
+        flex: none;
+        padding-left: 0rem;
+        width: 100%;
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .form-column {
+        flex: none;
+        width: 100%;
+        justify-content: center;
+        padding-bottom: 50px;
+    }
+
+    .header-container {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .reva-header {
+        padding: 40px 12px;
+    }
+}
+
+/* =============================================
+   HOW TO APPLY SECTION
+   ============================================= */
+.how-to-apply-main {
+    background-color: #f6f6f6;
+    padding: 80px 0 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hta-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hta-title-wrap {
+    margin-bottom: 40px;
+}
+
+.hta-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0;
+}
+
+.hta-steps-wrap {
+    width: 100%;
+}
+
+.hta-steps-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: space-between;
+    align-items: flex-start;    
+    margin-top: 40px;
+}
+
+.hta-step-item {
+    flex: 1 1 14%;
+    min-width: 100px;
+    max-width: 180px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 8px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.hta-step-icon {
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    flex-shrink: 0;
+}
+
+.hta-step-icon img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    filter: invert(1);
+    -webkit-filter: invert(1);
+}
+
+.hta-step-num {
+    font-size: 48px;
+    font-weight: 700;
+    color: #e22a27;
+    line-height: 1;
+    margin: 0 0 8px;
+}
+
+.hta-step-text {
+    font-size: 16px;
+    font-weight: 300;
+    color: #212529;
+    line-height: 1.5;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .hta-step-item {
+        flex: 1 1 30%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .how-to-apply-main {
+        padding: 40px 0;
+    }
+
+    .hta-container {
+        padding: 0 20px;
+    }
+
+    .hta-steps-list {
+        flex-wrap: nowrap;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hta-step-item {
+        flex: 1 1 40%;
+        max-width: 160px;
+    }
+
+    .hta-step-num {
+        font-size: 36px;
+    }
+
+    .hta-title {
+        font-size: 22px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hta-steps-list {
+        flex-wrap: nowrap;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hta-step-item {
+        max-width: 100% !important;
+        align-items: center;
+    }
+}
+
+/* ===== STUDY AT REVA SECTION (original compact) ===== */
+.study-at-reva-section {
+    background: linear-gradient(135deg, #e22a27, #e13d3c);
+    color: #ffffff;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.study-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.study-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.study-title {
+    font-size: 46px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.study-title .clr-red {
+    color: #ffffff;
+}
+
+.study-desc {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.study-btn {
+    background: #ffffff;
+    color: #e22a27;
+    border: 2px solid #ffffff;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.study-btn:hover {
+    background: #e22a27;
+    color: #ffffff;
+    border-color: #e22a27;
+}
+
+/* ===== STUDY AT REVA — FULL SECTION ===== */
+.study_at_reva_main_section {
+    background-color: #0b0b0b;
+    padding: 100px 0 140px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.study_at_reva_main_section .container {
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.study_at_reva_main_section .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.study_at_reva_main_section .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+.study_at_reva_main_section .col-xl-6,
+.study_at_reva_main_section .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+.study_reva_one {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.study_reva_sub_one {
+    background: linear-gradient(135deg, #e22a27 0%, #d94040 100%);
+    padding: 35px 55px;
+    color: #ffffff;
+    border-radius: 0;
+}
+
+.study_reva_sub_one .font-86 {
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 1;
+    margin: 0;
+    font-family: 'Roboto Slab', 'Nunito Sans', serif;
+    color: #ffffff;
+    margin-top: -90px;
+}
+
+.study_reva_sub_one .font-85 {
+    margin-top: -18px;
+}
+
+@media (max-width: 1600px) {
+    .study_reva_one {
+        margin-right: 90px;
+    }
+}
+
+.study_reva_sub_one .font-40 {
+    font-size: 28px;
+    font-weight: 300;
+    margin: 20px 0 10px;
+    color: #ffffff;
+    line-height: 30px;
+}
+
+.study_reva_sub_one .font-21 {
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+}
+
+.study_reva_sub_two {
+    background-color: #ffffff;
+    padding: 30px;
+    flex: 1;
+}
+
+@media (min-width: 1367px) and (max-width: 1919px) {
+    .study_right_content .font-76 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .accredited-item .font-18 {
+        max-width: 155px;
+        line-height: 22px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .study_reva_one {
+        margin-right: 0px !important;
+    }
+}
+
+.ranked_main {
+    width: 100%;
+}
+
+.ranked_one .font-21 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.study_right_contentt {
+    width: 100%;
+}
+
+.study_right_contentt .bullet-point {
+    list-style-type: disc !important;
+    padding-left: 20px !important;
+    margin: 0;
+}
+
+.study_right_contentt .bullet-point li {
+    padding-left: 0 !important;
+}
+
+.study_right_contentt .bullet-point li::before {
+    display: none !important;
+}
+
+.study_right_contentt ::marker {
+    color: #f9a455;
+    font-size: 20px;
+}
+
+.bullet-point {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bullet-point li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333333;
+    line-height: 1.6;
+}
+
+.bullet-point li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #1a73e8;
+}
+
+.font-16 {
+    font-size: 14px;
+}
+
+.right_study_content {
+    color: #ffffff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 7rem;
+}
+
+.right_study_content .font-24 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+}
+
+.international_study_right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 20px;
+}
+
+.international_study_right .item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+.study_right_content {
+    padding: 0;
+    text-align: left;
+}
+
+.study_right_content .font-76 {
+    font-size: 30px;
+    font-weight: 400;
+    color: #e13d3c;
+    margin: 0 0 4px;
+    line-height: 60px;
+    font-family: 'Roboto Slab', 'Nunito Sans', serif;
+}
+
+.study_right_content .font-18 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    margin: 0;
+}
+
+.study_at_reva_main_section .line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 20px 0;
+}
+
+.accredited_main {
+    margin-top: 10px;
+}
+
+.accredited_main .font-21 {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.accredited_main .mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.accredited_main_slider {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 48px
+}
+
+.accredited_main_slider .item {
+    flex: 0 0 calc(33.33% - 14px);
+    max-width: calc(33.33% - 14px);
+    text-align: center;
+}
+
+.accredited_main_slider .item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 0 auto 8px;
+    display: block;
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 8px;
+}
+
+.accredited_main_slider .item .font-18 {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .study_at_reva_main_section .col-lg-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .study_reva_sub_one .font-86 {
+        font-size: 42px;
+    }
+
+    .study_right_content .font-76 {
+        font-size: 32px;
+    }
+
+    .right_study_content {
+        margin-top: 30px;
+        margin-right: 0 !important;
+    }
+
+    .study_reva_one {
+        margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .study_at_reva_main_section {
+        padding: 40px 0;
+    }
+
+    .study_reva_sub_one .font-86 {
+        margin-top: 0px;
+    }
+
+    .study_reva_sub_one .font-85 {
+        margin-top: 0px;
+    }
+
+    .study_reva_sub_one {
+        padding: 30px 20px;
+    }
+
+    .study_reva_sub_one .font-86 {
+        font-size: 36px;
+    }
+
+    .study_reva_sub_one .font-40 {
+        font-size: 20px;
+    }
+
+    .study_reva_sub_two {
+        padding: 20px;
+    }
+
+    .right_study_content .font-24 {
+        font-size: 16px;
+    }
+
+    .study_right_content .font-76 {
+        font-size: 60px;
+    }
+
+    .study_right_content {
+        text-align: center;
+    }
+
+    .international_study_right .item {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .accredited-item {
+        flex: 0 0 calc(100% - 10px);
+        max-width: calc(100% - 10px);
+    }
+
+    .accredited-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .accredited_main .font-21,
+    .accredited_main .font-18 {
+        text-align: center;
+    }
+}
+
+/* ===== REVA SLIDER ===== */
+.reva-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.owl-nav {
+    display: flex !important;
+    flex-direction: column;
+    opacity: 0;
+}
+
+.owl-nav button.owl-next, .owl-nav button.owl-prev {
+    width: 44px;
+    height: 44px;
+    min-width: 24px;
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reva-slider__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.reva-slider__slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.accredited-item {
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.accredited-item img {
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.accredited-item .font-18 {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 1600px) {
+    .accredited-item .font-18 {
+        max-width: 155px;
+        line-height: 22px;
+        margin-top: 25px;
+        text-align: left;
+    }
+}
+
+@media (max-width: 991px) {
+    .accredited-item .font-18 {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .reva-slider[data-slider="stats"] .reva-slider__slide,
+    .reva-slider[data-slider="accredited"] .reva-slider__slide {
+        flex: 0 0 50%;
+        min-width: 50%;
+    }
+}
+
+@media (max-width: 767px) {
+    .reva-slider[data-slider="stats"] .reva-slider__slide,
+    .reva-slider[data-slider="accredited"] .reva-slider__slide {
+        flex: 0 0 100%;
+        min-width: 100%;
+        text-align: center;
+    }
+
+    .accredited-item img {
+        height: 100px;
+    }
+
+    .accredited-item .font-18 {
+        font-size: 15px;
+    }
+}
+
+/* =============================================
+   PROGRAMMES AT REVA SECTION
+   ============================================= */
+.programme-at-reva-section {
+    background-color: #fbfbfb;
+    width: 100%;
+    padding: 60px 0 0;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.programme-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;        
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.programe-ate-one {
+    margin-bottom: 40px;
+}
+
+.programme-title {
+    font-size: 46px;
+    font-weight: 700;
+    color: #111111;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.programme-sub {
+    font-size: 20px;
+    font-weight: 300;
+    color: #444444;
+    line-height: 1.6;
+    margin: 0;
+    padding-right: 8rem;
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.iframe-row {
+    width: 100%;
+}
+
+.admission-iframe {
+    width: 100%;
+    min-height: 700px;
+    border: none;
+    display: block;
+    background: #ffffff;
+}
+
+@media (max-width: 767px) {
+    .programme-at-reva-section {
+        padding: 40px 0 0;
+    }
+
+    .programme-container {
+        padding: 0 20px;
+    }
+
+    .programme-title {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .programme-sub {
+        font-size: 18px;
+        text-align: center;
+        padding-right: 0px;
+    }
+
+    .admission-iframe {
+        min-height: 600px;
+    }
+}
+
+/* =============================================
+   PLACEMENT AT REVA SECTION
+   ============================================= */
+.placement-reva-section {
+    background-color: #0b0b0b;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    padding: 80px 0px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    min-height: 500px;
+}
+
+.placement-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 0 170px;
+    box-sizing: border-box;
+}
+
+.placement-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.placement-left {
+    flex: 0 0 60%;
+    max-width: 60%;
+    min-width: 280px;
+}
+
+.placement-title-wrap {
+    margin-bottom: 30px;
+}
+
+.placement-title {
+    font-size: 46px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.placement-desc {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 650px;
+}
+
+.placement-counter-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-left: 0;
+    gap: 15px;
+}
+
+.placement-counter-list li {
+    min-width: 120px;
+    padding: 20px 16px;
+    box-sizing: border-box;
+}
+
+.placement-stat {
+    text-align: left;
+}
+
+.stat-num {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px;
+    line-height: 1.1;
+}
+
+.stat-label {
+    margin-top: 2rem;
+    font-size: 18px;
+    padding-right: 6rem;
+    line-height: 24px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 0;
+}
+
+/* =============================================
+   PREFERRED RECRUITING PARTNERS
+   ============================================= */
+.recruiters-standalone {
+    background-color: #000000;
+    width: 100%;
+    padding-top: 87px;
+    padding-bottom: 47px;
+    box-sizing: border-box;
+}
+
+.recruiters-inner-wrap {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.recruiters-heading {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    margin-bottom: 2rem;
+    line-height: 30px;
+}
+
+.recruiter-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 5px;
+    column-gap: 30px;
+    align-items: center;
+}
+
+.recruiter-grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px;
+}
+
+.recruiter-grid-item img {
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    filter: none;
+    opacity: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.recruiter-grid-item img:hover {
+    transform: scale(1.08);
+    opacity: 0.85;
+}
+
+@media (max-width: 991px) {
+    .recruiters-heading {
+        text-align: center;
+    }
+    .placement-reva-section {
+        background-size: inherit;
+        padding: 1.2rem 0px 20px;
+        background-position: -60% -30px;
+    }
+    .recruiter-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 30px !important;
+    }
+
+    .recruiter-grid-item {
+        flex: 0 0 calc(33.33% - 20px) !important;
+        max-width: calc(33.33% - 20px) !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .placement-reva-section {
+        background-position: right center;
+    }
+}
+
+@media (max-width: 767px) {
+    .recruiters-standalone {
+        padding: 40px 0 50px;
+    }
+
+    .recruiters-inner-wrap {
+        padding: 0 20px;
+    }
+
+    .recruiter-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 20px !important;
+    }
+
+    .recruiter-grid-item {
+        flex: 0 0 calc(50% - 10px) !important;
+        max-width: calc(50% - 10px) !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .placement-title {
+        font-size: 32px;
+    }
+
+    .placement-left {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    .placement-counter-list {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+
+    .stat-label {
+        margin-top: 0.5rem !important;
+        padding-right: 0 !important;
+        font-size: 15px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .placement-reva-section {
+        padding: 40px 0;
+    }
+
+    .placement-container {
+        padding: 0 20px;
+    }
+
+    .placement-title {
+        font-size: 26px;
+    }
+
+    .placement-desc {
+        font-size: 15px;
+    }
+
+    .placement-counter-list {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+
+    .stat-num {
+        font-size: 1.5rem !important;
+    }
+
+    .stat-label {
+        margin-top: 0.5rem !important;
+        padding-right: 0 !important;
+        font-size: 14px !important;
+    }
+}
+
+.line {
+    border: 1px solid #ebebeb45;
+    margin-top: 2rem;
+    margin-bottom: 2rem;    
+    margin: 0 auto;
+    display: flex;
+    width: 1300px;
+}
+
+/* =============================================
+   LIFE AT REVA SECTION
+   ============================================= */
+.life-at-reva-section {
+    background-color: #000000;
+    width: 100%;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.life-at-reva-container {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.life-title {
+    font-size: 46px;
+    font-weight: 700;
+    color: #ffffff;       
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-bottom: 7rem;
+    padding-left: 9rem;
+    padding-top: 2rem;        
+}
+
+.video-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1920 / 1080;
+    border-radius: 0;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #111111;
+}
+
+.video-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.video-wrapper:hover .play-button {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+@media (max-width: 767px) {
+    .life-at-reva-container {
+        padding: 0;
+    }
+
+    .life-title {
+        font-size: 26px;
+        text-align: center;
+        margin-bottom: 25px;
+        padding-left: 1rem;
+    }
+
+    .play-button {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* =============================================
+   THE REVA EXPERIENCE SECTION
+   ============================================= */
+.reva-edge-section {
+    background-color: #e13d3c;
+    width: 100%;
+    padding: 60px 0 70px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+.reva-edge-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.reva-edge-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;        
+    line-height: 30px;
+    margin-bottom: 74px;
+}
+
+.reva-edge-grid-wrap {
+    width: 100%;
+}
+
+.reva-edge-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0px;
+    justify-content: center;
+}
+
+.reva-edge-list li {
+    flex: 0 1 calc(16.666% - 20px);
+    min-width: 100px;
+}
+
+.reva-edge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.reva-edge-item:hover {
+    transform: translateY(-6px);
+}
+
+.reva-edge-item figure {
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.reva-edge-item:hover figure {
+    transform: scale(1.06) rotate(-3deg);
+}
+
+.reva-edge-item figure img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;    
+    display: inline-block;
+}
+
+.edge-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+    line-height: 30px;
+}
+
+@media (max-width: 1199px) {
+    .reva-edge-list li {
+        flex: 0 1 calc(20% - 24px);
+    }
+}
+
+@media (max-width: 991px) {
+    .reva-edge-list li {
+        flex: 0 1 calc(25% - 24px);
+    }
+    .reva-edge-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .reva-edge-section {
+        padding: 40px 0;
+    }
+
+    .reva-edge-container {
+        padding: 0 20px;
+    }
+
+    .reva-edge-title {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .reva-edge-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .reva-edge-list li {
+        flex: 0 1 calc(33.33% - 16px);
+        min-width: 80px;
+    }
+
+    .reva-edge-item figure {
+        width: 76px;
+        height: 76px;
+    }
+
+    .reva-edge-item figure img {
+        width: 46px;
+        height: 46px;
+    }
+
+    .edge-label {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reva-edge-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .reva-edge-list li {
+        flex: 0 1 calc(50% - 16px);
+    }
+}
+
+/* =============================================
+   FOOTER SECTION
+   ============================================= */
+.reva-footer {
+    background-color: #1e1e1e;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+    width: 100%;
+    padding: 30px 0;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+    border-top: 4px solid #e22a27;
+}
+
+.reva-footer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background-image: url(https://www.reva.edu.in/new-admissions/images/path2.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+    z-index: -9;
+    pointer-events: none;
+}
+
+.footer-container {
+    margin: 0 auto;
+    padding: 0 90px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo-wrap {
+    flex-shrink: 0;
+}
+
+.footer-logo {
+    height: 80px;
+    width: auto;
+}
+
+.footer-divider {
+    width: 1px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.footer-text-wrap {
+    font-size: 16px;
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+.footer-text {
+    margin: 0;
+}
+
+.footer-text a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+    color: #e22a27;
+}
+
+@media (max-width: 767px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .footer-divider {
+        width: 60px;
+        height: 1px;
+    }
+
+    .footer-text-wrap {
+        font-size: 12px;
+    }
+}
+
+/* =============================================
+   FLOATING APPLY NOW BUTTON
+   ============================================= */
+.floating-apply-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    z-index: 9999999;
+    border: 2px solid #e22a27;
+    padding: 12px 18px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+.floating-apply-btn:hover {
+    background: #e22a27;
+    color: #ffffff;
+}
+
+@media (max-width: 991px) {
+    .floating-apply-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+
+.container,
+.hta-container,
+.programme-container,
+.placement-container,
+.recruiters-inner-wrap,
+.reva-edge-container,
+.footer-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+@media (min-width: 576px) {
+    .container,
+    .hta-container,
+    .programme-container,
+    .placement-container,
+    .recruiters-inner-wrap,
+    .reva-edge-container,
+    .footer-container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container,
+    .hta-container,
+    .programme-container,
+    .placement-container,
+    .recruiters-inner-wrap,
+    .reva-edge-container,
+    .footer-container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container,
+    .hta-container,
+    .programme-container,
+    .placement-container,
+    .recruiters-inner-wrap,
+    .reva-edge-container,
+    .footer-container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container,
+    .hta-container,
+    .programme-container,
+    .placement-container,
+    .recruiters-inner-wrap,
+    .reva-edge-container,
+    .footer-container {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container,
+    .hta-container,
+    .programme-container,
+    .placement-container,
+    .recruiters-inner-wrap,
+    .reva-edge-container,
+    .footer-container {
+        max-width: 1320px;
+    }
+}
+
+/* Hide Salesforce community theme footer */
+footer.footer,
+.forceCommunityThemeFooter,
+.themeFooter {
+    display: none !important;
+}
+
+/* ── Custom Input Icons ── */
+.input-icon-container {
+    position: relative;
+    width: 100%;
+    height: 38px;
+    border: 1px solid #727272;
+    border-radius: 6px;
+    background-color: #ffffff;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.input-icon-container:focus-within {
+    border-color: #1b5297 !important;
+    box-shadow: 0 0 3px rgba(27, 82, 151, .5) !important;
+}
+
+.input-icon-container .input-field-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 38px !important;
+    width: 36px !important;
+    z-index: 10;
+    pointer-events: none;
+    background-color: #ffffff !important;
+    border-radius: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    --slds-c-icon-color-foreground: #be2e26 !important;
+    --sds-c-icon-color-foreground: #be2e26 !important;
+}
+
+.input-icon-container .input-field-icon svg,
+.input-icon-container .input-field-icon .slds-icon {
+    fill: #be2e26 !important;
+    color: #be2e26 !important;
+}
+
+/* Remove standard lightning input border to use the wrapper border instead */
+.input-icon-container lightning-input {
+    --slds-c-input-color-border: transparent !important;
+    --sds-c-input-color-border: transparent !important;
+    --slds-c-input-radius-border: 0 !important;
+    --slds-c-input-shadow-focus: none !important;
+    --slds-c-input-spacing-padding-left: 46px !important;
+    --sds-c-input-spacing-padding-left: 46px !important;
+    display: block;
+}
+
+/* Hide duplicate validation text from standard Salesforce styling */
+lightning-input .slds-form-element__help,
+.slds-form-element__help {
+    display: none !important;
+}

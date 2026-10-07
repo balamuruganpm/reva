@@ -1,0 +1,11 @@
+https://reva-university--revapar.sandbox.my.salesforce.com
+Username : santoshkumar.bangarimath@reva.edu.in.revapar
+Password : Santosh@2026
+
+https://reva-university--revapar.sandbox.my.site.com/Admissions/s/
+https://reva-university--revapar.sandbox.my.site.com/Admissions/s/
+
+
+StudentAdmissionSinglePageNew
+
+StudentAdmissionParent
